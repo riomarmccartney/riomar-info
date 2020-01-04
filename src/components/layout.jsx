@@ -1,12 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import './layout.scss'
+import "./layout.scss"
 
 const Layout = ({ children }) => {
   
 
   return (
-    <main>
+    <main className="px-3 py-2">
       {children}
     </main>
   )
