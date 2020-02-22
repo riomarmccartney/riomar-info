@@ -3,11 +3,10 @@ import PropTypes from "prop-types"
 import "./layout.scss"
 
 const Layout = ({ children }) => {
-  
-
   return (
-    <main className="px-3 py-2">
+    <main className="px-3 text-base font-body leading-normal">
       {children}
+      
     </main>
   )
 }
