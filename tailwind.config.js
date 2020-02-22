@@ -1,8 +1,10 @@
 module.exports = {
   theme: {
     fontFamily: {
-      display: ['Inter', 'sans-serif'],
-      body: ['Acumin Pro', 'sans-serif']
+      body: ['acumin-pro', 'sans-serif']
+    },
+    fontSize: {
+      'default': '16px',
     }
   },
   plugins: [

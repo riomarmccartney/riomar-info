@@ -17,5 +17,13 @@ module.exports = {
         postCssPlugins: [require('tailwindcss')('./tailwind.config.js')],
       },
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        typekit: {
+          id: 'apn5hmw'
+        }
+      }
+    },
   ]
 }
