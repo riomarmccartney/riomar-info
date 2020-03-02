@@ -1,28 +1,21 @@
 module.exports = {
   theme: {
     fontFamily: {
-      body: ['acumin-pro', 'sans-serif']
+      body: ['neue-haas-unica','Noto Sans JP','sans-serif']
     },
     fontSize: {
-      'default': '16px',
+      'xs': '.75rem',
+      'sm': '.875rem',
+      'tiny': '.875rem',
+      'base': '1rem',
+      'lg': '1.125rem',
+      'xl': '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+      '4xl': '2.25rem',
+      '5xl': '3rem',
+      '6xl': '4rem',
+      '7xl': '5rem',
     }
-  },
-  plugins: [
-    require('tailwindcss-grid')({
-      grids: [2, 4, 6, 10, 12],
-      gaps: {
-        0: '0',
-        4: '1rem',
-        8: '2rem',
-        '4-x': '1rem',
-        '4-y': '1rem',
-      },
-      autoMinWidths: {
-        '16': '4rem',
-        '24': '6rem',
-        '300px': '300px',
-      },
-      variants: ['responsive'],
-    }),
-  ],
+  } 
 }

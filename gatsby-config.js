@@ -21,7 +21,10 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         typekit: {
-          id: 'apn5hmw'
+          id: 'asi7nmf'
+        },
+        google: {
+          families: ['Noto Sans JP:200,300,400,500,700']
         }
       }
     },
