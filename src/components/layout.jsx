@@ -4,7 +4,7 @@ import "./global.scss"
 
 const Layout = ({ children }) => {
   return (
-    <main className="px-3 text-base font-body leading-normal">
+    <main className="min-h-screen min-w-full max-w-screen-xl px-3 lg:px-8 font-body leading-normal md:text-lg">
       {children}
       
     </main>
