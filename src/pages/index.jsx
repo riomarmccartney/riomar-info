@@ -2,13 +2,11 @@ import React from 'react'
 
 import Layout from '../components/layout'
 import Nav from '../components/nav'
-import SEO from "../components/SEO"
 
 const IndexPage = () => {
     return (
         <Layout>
           <Nav />
-          <SEO />
           <p className="font-body">Riomar Mccartney / マッカートニー龍馬 is a British Japanese
 product designer & visual artist based in Tokyo. 
 Working at the intersection of expression, interaction design, and engineering with an interest in media arts and graphic design.
