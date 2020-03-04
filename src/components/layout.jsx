@@ -5,7 +5,7 @@ import "./global.scss"
 
 const Layout = ({ children }) => {
   return (
-    <main className="min-h-screen min-w-full max-w-screen-xl px-3 lg:px-8 font-body leading-normal md:text-lg">
+    <main className="min-h-screen min-w-full max-w-screen-xl px-3 md:px-8 font-body leading-normal md:text-xl">
       <SEO />
       {children}
       
