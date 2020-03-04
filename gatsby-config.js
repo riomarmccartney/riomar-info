@@ -14,11 +14,19 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        postCssPlugins: [
-          require("tailwindcss"),
-          require("./tailwind.config.js")
-        ],
+        postCssPlugins: [require('tailwindcss')('./tailwind.config.js')],
       },
+    },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        typekit: {
+          id: 'asi7nmf'
+        },
+        google: {
+          families: ['Noto Sans JP:200,300,400,500,700']
+        }
+      }
     },
   ]
 }
