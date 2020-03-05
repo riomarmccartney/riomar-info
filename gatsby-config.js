@@ -2,9 +2,9 @@ module.exports = {
   siteMetadata: {
     title: "Riomar Mccartney",
     titleTemplate: "%s － Riomar Mccartney",
-    description:"",
+    description:"Co-Founder of upcoming.studio | Riomar McCartney is a British Japanese designer & visual artist based in Tokyo, Japan. His work consists of combining expression, interaction, and engineering through the mediums of product designs, graphics, and media arts.",
     url: "https://riomar.co",
-    image: "/progressive.jpg",
+    image: "/thumb.png",
     social: {
       twitter: "riomarmccartney"
     },
