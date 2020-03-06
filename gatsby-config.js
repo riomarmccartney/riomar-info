@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Riomar Mccartney",
-    titleTemplate: "%s － Riomar Mccartney",
+    title: "Riomar McCartney",
+    titleTemplate: "%s － Riomar McCartney",
     description:"Co-Founder of upcoming.studio | Riomar McCartney is a British Japanese designer and visual artist based in Tokyo, Japan. His work combines expression, interaction, and engineering explored through product design, graphic design, and media arts.",
     url: "https://riomar.co",
     image: "/thumb.png",
@@ -17,9 +17,9 @@ module.exports = {
         // Defines where to place the tracking script - `true` in the head and `false` in the body
         head: false,
         // Setting this parameter is optional
-        anonymize: true,
+        //anonymize: true,
         // Setting this parameter is also optional
-        respectDNT: true,
+        //respectDNT: true,
         // Avoids sending pageview hits from custom paths
         exclude: ["/preview/**", "/do-not-track/me/too/"],
         // Delays sending pageview hits on route update (in milliseconds)
