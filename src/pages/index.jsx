@@ -2,10 +2,12 @@ import React from 'react'
 import visGrid from '../assets/temp-grid.png'
 import Layout from '../components/layout'
 import Nav from "../components/nav"
+import SEO from '../components/SEO'
 
 const IndexPage = () => {
     return (
         <Layout>
+            <SEO />
             <positionException className="md:absolute"><Nav/></positionException>
             <section className="pt-0 md:pt-6 pb-4 grid md:grid-cols-12 col-gap-2 md:col-gap-4 row-gap-8 md:row-gap-4">
                 <img className="md:row-start-1 md:col-start-7 md:col-end-12 md:pt-32"  src={visGrid} alt="Logo" />
