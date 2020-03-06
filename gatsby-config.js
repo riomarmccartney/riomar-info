@@ -10,30 +10,12 @@ module.exports = {
     },
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        postCssPlugins: [require('tailwindcss')('./tailwind.config.js')],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        typekit: {
-          id: 'asi7nmf'
-        },
-        google: {
-          families: ['Noto Sans JP:200,300,400,500,700']
-        }
-      }
-    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-159819070-1",
+        trackingId: 'UA-159819070-1',
         // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: true,
+        head: false,
         // Setting this parameter is optional
         anonymize: true,
         // Setting this parameter is also optional
@@ -54,5 +36,23 @@ module.exports = {
         cookieDomain: "auto",
       },
     },
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        postCssPlugins: [require('tailwindcss')('./tailwind.config.js')],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        typekit: {
+          id: 'asi7nmf'
+        },
+        google: {
+          families: ['Noto Sans JP:200,300,400,500,700']
+        }
+      }
+    }
   ]
 }
