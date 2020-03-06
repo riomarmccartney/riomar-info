@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: "Riomar Mccartney",
     titleTemplate: "%s － Riomar Mccartney",
-    description:"Co-Founder of upcoming.studio | Riomar McCartney is a British Japanese designer & visual artist based in Tokyo, Japan. His work consists of combining expression, interaction, and engineering through the mediums of product designs, graphics, and media arts.",
+    description:"Co-Founder of upcoming.studio | Riomar McCartney is a British Japanese designer and visual artist based in Tokyo, Japan. His work combines expression, interaction, and engineering explored through product design, graphic design, and media arts.",
     url: "https://riomar.co",
     image: "/thumb.png",
     social: {
@@ -10,30 +10,12 @@ module.exports = {
     },
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        postCssPlugins: [require('tailwindcss')('./tailwind.config.js')],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        typekit: {
-          id: 'asi7nmf'
-        },
-        google: {
-          families: ['Noto Sans JP:200,300,400,500,700']
-        }
-      }
-    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-159819070-1",
+        trackingId: 'UA-159819070-1',
         // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: true,
+        head: false,
         // Setting this parameter is optional
         anonymize: true,
         // Setting this parameter is also optional
@@ -54,5 +36,23 @@ module.exports = {
         cookieDomain: "auto",
       },
     },
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        postCssPlugins: [require('tailwindcss')('./tailwind.config.js')],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        typekit: {
+          id: 'asi7nmf'
+        },
+        google: {
+          families: ['Noto Sans JP:200,300,400,500,700']
+        }
+      }
+    }
   ]
 }
