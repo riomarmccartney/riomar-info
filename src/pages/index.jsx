@@ -1,9 +1,11 @@
 import React from 'react'
-import visGrid from '../assets/temp-grid.png'
 import Layout from '../components/layout'
-import Nav from "../components/nav"
 import SEO from '../components/SEO'
+import Nav from '../components/nav'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
+
+import visGrid from '../assets/temp-grid.png'
+
 
 const IndexPage = () => {
     return (
