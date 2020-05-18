@@ -1,0 +1,9 @@
+/////// ALT
+
+$styleAlt: "ss01" on, "ss02" on;
+
+.styleAlt {
+  -moz-font-feature-settings: $styleAlt;
+  -webkit-font-feature-settings: $styleAlt;
+  font-feature-settings: $styleAlt;
+}

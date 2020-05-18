@@ -1,7 +1,5 @@
 @tailwind base;
+@import "base/global";
+@import "base/typography";
 @tailwind components;
 @tailwind utilities;
-
-html {
-    @apply text-base;
-}
