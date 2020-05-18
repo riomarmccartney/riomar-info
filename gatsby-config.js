@@ -1,3 +1,5 @@
+const path = require(`path`)
+
 module.exports = {
   siteMetadata: {
     title: "Riomar McCartney",
@@ -10,6 +12,7 @@ module.exports = {
     },
   },
   plugins: [
+    "gatsby-transformer-remark",
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -54,5 +57,29 @@ module.exports = {
         }
       }
     }
+    {
+      resolve: "gatsby-plugin-favicon",
+      options: {
+        logo: "./src/assets/favicon.png",
+        background: "#fff",
+        theme_color: "#fff",
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `assets`,
+        path: path.join(__dirname, `src`, `assets`),
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "projects",
+        path: `${__dirname}/src/projects`,
+      }
+    },
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp"
   ]
 }
