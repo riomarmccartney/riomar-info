@@ -3,13 +3,13 @@ import { Link } from 'gatsby'
 import Clock from 'react-live-clock'
 
 
-const Nav = () => {
+const Nav = ({coverDesign}) => {
     const [links] = useState([
         {
             title: 'Riomar McCartney',
             betweenPages: true,
             path: '/',
-            style: 'col-start-1 md:col-start-1 row-start-1',
+            style: `col-start-1 md:col-start-1 row-start-1 ${coverDesign ? "md:hidden" : "md:block"}`,
             id: 1
         },
         /* {
@@ -28,16 +28,18 @@ const Nav = () => {
         }
     ]);
     return (
-        <nav className="py-6 grid grid-cols-12 grid-rows-2 col-gap-2 md:col-gap-4 whitespace-no-wrap">
-            <span className="col-start-7 md:col-start-8 row-start-1"><Clock format={'HH:mm'} timezone={'Asia/Tokyo'} /><span style={{fontSize: '9px'}}> [東京] </span></span>
-            {links.map(link => {
+        <div className="w-full relative">
+          <nav className={`py-6 grid grid-cols-12 grid-rows-2 col-gap-2 md:col-gap-4 whitespace-no-wrap w-full ${coverDesign ? "md:absolute" : "md:static"}`}>
+              <span className="col-start-7 md:col-start-8 row-start-1"><Clock format={'HH:mm'} timezone={'Asia/Tokyo'} /><span className="text-xs ml-1">[東京]</span></span>
+              {links.map(link => {
                 if (link.betweenPages) {
                     return ( <Link key={link.id} to={link.path} className={link.style}>{link.title}</Link> )
                 } else {
                     return ( <a key={link.id} href={link.path} className={link.style}>{link.title}</a> )
                 }
-            })}
-        </nav>
+              })}
+          </nav>
+        </div>
     )
 }
 
