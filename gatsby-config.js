@@ -80,13 +80,6 @@ module.exports = {
         path: path.join(__dirname, `src`, `assets`),
       },
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "projects",
-        path: `${__dirname}/src/projects`,
-      }
-    },
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp"
   ]
