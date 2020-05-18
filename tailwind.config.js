@@ -1,7 +1,8 @@
 module.exports = {
   theme: {
     fontFamily: {
-      body: ['neue-haas-unica','Noto Sans JP','sans-serif']
+      body: ['neue-haas-grotesk-text','Noto Sans JP','sans-serif'],
+      display: ['neue-haas-grotesk-display','Noto Sans JP','sans-serif']
     },
     fontSize: {
       'xs': '.75rem',
