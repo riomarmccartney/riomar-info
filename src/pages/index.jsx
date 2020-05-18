@@ -24,7 +24,7 @@ export default function IndexPage() {
   return (
     <Layout>
         <SEO />
-        <positionException className="md:absolute"><Nav/></positionException>
+        <Nav coverDesign/>
         <section className="pt-0 md:pt-6 pb-4 grid md:grid-cols-12 col-gap-2 md:col-gap-4 row-gap-8 md:row-gap-4">
             <section className="md:row-start-1 md:col-start-7 md:col-end-12 md:pt-32">
               <Img className="grid" fluid={data.file.childImageSharp.fluid} />
