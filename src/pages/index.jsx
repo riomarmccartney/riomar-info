@@ -1,9 +1,9 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/SEO"
-import Nav from "../components/nav"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
+import Layout from "../components/layout"
+import Nav from "../components/nav"
+import SEO from "../components/SEO"
 import Img from "gatsby-image"
 
 
