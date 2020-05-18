@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import Clock from 'react-live-clock'
 
@@ -40,10 +39,6 @@ const Nav = () => {
             })}
         </nav>
     )
-}
-
-Nav.propTypes = {
-    children: PropTypes.element.isRequired
 }
 
 export default Nav
