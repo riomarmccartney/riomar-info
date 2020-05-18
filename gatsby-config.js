@@ -12,11 +12,12 @@ module.exports = {
     },
   },
   plugins: [
+    "gatsby-plugin-react-helmet",
     "gatsby-transformer-remark",
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-159819070-1',
+        trackingId: "UA-159819070-1",
         // Defines where to place the tracking script - `true` in the head and `false` in the body
         head: false,
         // Setting this parameter is optional
@@ -37,26 +38,33 @@ module.exports = {
         sampleRate: 5,
         siteSpeedSampleRate: 10,
         cookieDomain: "auto",
-      },
+      }
     },
-    'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-plugin-sass`,
+      resolve: "gatsby-plugin-sass",
       options: {
-        postCssPlugins: [require('tailwindcss')('./tailwind.config.js')],
+        postCssPlugins: [require("tailwindcss")("./tailwind.config.js")],
       },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: "gatsby-plugin-web-font-loader",
       options: {
         typekit: {
-          id: 'asi7nmf'
+          id: "asi7nmf"
         },
         google: {
-          families: ['Noto Sans JP:200,300,400,500,700']
+          families: ["Noto Sans JP:400,700"]
         }
       }
-    }
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: "/assets/"
+        }
+      }
+    },
     {
       resolve: "gatsby-plugin-favicon",
       options: {
