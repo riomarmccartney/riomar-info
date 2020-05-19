@@ -2,6 +2,7 @@ module.exports = {
   theme: {
     fontFamily: {
       body: ['neue-haas-grotesk-text','Noto Sans JP','sans-serif'],
+      serif: ['freight-display-pro', 'Times New Roman', 'serif'],
       display: ['neue-haas-grotesk-display','Noto Sans JP','sans-serif']
     },
     fontSize: {
