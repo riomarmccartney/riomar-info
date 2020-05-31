@@ -14,9 +14,7 @@ const SEO = ({ title, description, image, pathname, article }) => (
           defaultDescription,
           siteUrl,
           defaultImage,
-          social: {
-              twitter,
-          },
+          connect
         },
       },
     }) => {
@@ -41,9 +39,11 @@ const SEO = ({ title, description, image, pathname, article }) => (
             )}
             {seo.image && <meta property="og:image" content={seo.image} />}
             <meta name="twitter:card" content="summary_large_image" />
-            {twitter && (
-              <meta name="twitter:creator" content={twitter} />
-            )}
+            {connect.map((connect) => {
+              return (connect.type === "Twitter") ? (
+                <meta name="twitter:creator" content={connect.userName} />
+              ) : (``)
+            })}
             {seo.title && <meta name="twitter:title" content={seo.title} />}
             {seo.description && (
               <meta name="twitter:description" content={seo.description} />
@@ -52,7 +52,6 @@ const SEO = ({ title, description, image, pathname, article }) => (
           </Helmet>
       )
     }}
-    
   />
 )
 
@@ -83,9 +82,7 @@ const query = graphql`
         defaultDescription: description
         siteUrl: url
         defaultImage: image
-        social {
-            twitter,
-        },
+        connect: connect {type userName}
       }
     }
   }

@@ -7,9 +7,50 @@ module.exports = {
     description:"Co-Founder of upcoming.studio | Riomar McCartney is a British Japanese designer and visual artist based in Tokyo, Japan. His work combines expression, interaction, and engineering explored through product design, graphic design, and media arts.",
     url: "https://riomar.co",
     image: "/thumb.png",
-    social: {
-      twitter: "riomarmccartney"
-    },
+    connect: [
+      {
+          type: "Mobile",
+          userName: "+81 (0) 70 2665 2366",
+          analytics: false,
+          path: "tel:+8170-2665-2366",
+          id: 1
+      },
+      {
+          type: "Email",
+          userName: "hey@riomar.co",
+          analytics: false,
+          path: "mailto:hey@riomar.co?subject=Question%20about%20your%20work%20/%20Quote%20request%20/%20Work%20proposal&body=Hi%20Riomar,%0D%0A%0D%0A",
+          id: 2
+      },
+      {
+          type: "Instagram",
+          userName: "@riomarmccartney",
+          analytics: true,
+          path: "https://instagram.com/riomarmccartney",
+          id: 3
+      },
+      {
+          type: "Twitter",
+          userName: "@riomarmccartney",
+          analytics: true,
+          path: "https://twitter.com/riomarmccartney",
+          id: 4
+      },
+      {
+          type: "Are.na",
+          userName: "riomar-mccartney",
+          analytics: true,
+          path: "https://are.na/riomar-mccartney",
+          id: 5
+      },
+      {
+          type: "VSCO",
+          userName: "riomarmccartney",
+          analytics: true,
+          path: "https://vs.co/riomarmccartney",
+          id: 6
+      }
+    ],
   },
   plugins: [
     "gatsby-plugin-react-helmet",
