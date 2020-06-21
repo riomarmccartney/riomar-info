@@ -18,11 +18,11 @@ const Information = () => {
                 <br/>
                 <p> Curriculum vitae & portfolio available upon request.<br />Please feel free to contact me if you are interested in collaborating, working on something new or for any more additional information.</p>
                 <ul className="pl-8">
-                    {data.site.siteMetadata.connect.map((connect) => {
-                      return connect.analytics ? (
-                        <li className="link"><OutboundLink key={connect.id} href={connect.path} target="_blank" rel="noopener noreferrer">{connect.type} ╱ {connect.userName}</OutboundLink></li>
+                    {data.site.siteMetadata.contact.map((contact) => {
+                      return contact.analytics ? (
+                        <li className="link"><OutboundLink key={contact.id} href={contact.path} target="_blank" rel="noopener noreferrer">{contact.type} ╱ {contact.userName}</OutboundLink></li>
                       ) : (
-                        <li className="link"><a key={connect.id} href={connect.path} target="_blank" rel="noopener noreferrer">{connect.type} ╱ {connect.userName}</a></li>
+                        <li className="link"><a key={contact.id} href={contact.path} target="_blank" rel="noopener noreferrer">{contact.type} ╱ {contact.userName}</a></li>
                       )
                     })}
                 </ul>
@@ -38,10 +38,10 @@ const Information = () => {
 export default Information
 
 const query = graphql`
-  query connect{
+  query {
     site {
       siteMetadata {
-        connect {
+        contact {
           type
           userName
           analytics
