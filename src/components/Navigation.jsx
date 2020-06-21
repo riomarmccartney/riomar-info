@@ -1,41 +1,39 @@
 import React, { useState } from "react"
+import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import classNames from "classnames"
 import Clock from "react-live-clock"
 
-
-const Nav = ({coverDesign}) => {
+const Navigation = props => {
     const [links] = useState([
         {
             title: "Riomar McCartney",
             betweenPages: true,
             path: "/",
-            style: `link col-start-1 md:col-start-1 row-start-1 ${coverDesign ? "md:hidden" : "md:block"}`,
-            id: 1
+            className: classNames("col-start-1 md:col-start-1", (props.hideName && "block md:hidden"))
         },
         /* {
             title: "Vis Bank",
             betweenPages: true,
             path: "/visualbank/",
-            style: "col-start-10 md:col-start-11 row-start-1",
-            id: 2
+            className: "col-start-10 md:col-start-11",
         }, */
         {
             title: "Contact",
             betweenPages: false,
             path: "mailto:contact@riomar.co?subject=Question%20about%20your%20work%20/%20Quote%20request%20/%20Work%20proposal&body=Hi%20Riomar,%0D%0A%0D%0A",
-            style: "link col-start-10 md:col-start-11 row-start-1",
-            id: 3
+            className: "col-start-10 md:col-start-11",
         }
     ]);
     return (
         <div className="w-full relative">
-          <nav className={`py-6 grid grid-cols-12 grid-rows-2 col-gap-2 md:col-gap-4 whitespace-no-wrap w-full ${coverDesign ? "md:absolute" : "md:static"}`}>
+          <nav className={classNames(props.className, "py-6 grid grid-cols-12 grid-rows-2 col-gap-2 md:col-gap-4 whitespace-no-wrap w-full")}>
               <span className="col-start-7 md:col-start-8 row-start-1"><Clock format={"HH:mm"} timezone={"Asia/Tokyo"} /><span className="text-small ml-1">[<span className="text-xs">東京</span>]</span></span>
               {links.map(link => {
                 return link.betweenPages ? (
-                  <Link key={link.id} to={link.path} className={link.style}> {link.title}</Link>
+                  <Link key={link.id} to={link.path} className={link.className}> {link.title}</Link>
                 ) : (
-                  <a key={link.id} href={link.path} className={link.style}> {link.title}</a>
+                  <a key={link.id} href={link.path} className={classNames("link row-start-1", link.className)}> {link.title}</a>
                 )
               })}
           </nav>
@@ -43,4 +41,8 @@ const Nav = ({coverDesign}) => {
     )
 }
 
-export default Nav
+export default Navigation
+
+Navigation.propTypes = {
+  className: PropTypes.string,
+}

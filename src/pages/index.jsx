@@ -1,11 +1,12 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+
 import Layout from "../components/Layout"
-import Nav from "../components/Navigation"
+import Navigation from "../components/Navigation"
 import BioIntro from "../components/BioIntro"
 import SEO from "../components/SEO"
-import Img from "gatsby-image"
 
+import Img from "gatsby-image"
 
 export default function IndexPage() {
   const data = useStaticQuery(graphql`
@@ -21,16 +22,19 @@ export default function IndexPage() {
       }
     }
   `)
+
   return (
     <Layout>
         <SEO />
-        <Nav coverDesign/>
+        <Navigation hideName className="md:absolute md:static"/>
+
         <section alt="page" className="pt-0 md:pt-6 pb-4 grid md:grid-cols-12 col-gap-2 md:col-gap-4 row-gap-8 md:row-gap-4">
-          <section className="md:row-start-1 md:col-start-1 md:col-end-6">
-              <Information />
-          </section>
-          <section alt="right" className="md:row-start-1 md:col-start-7 md:col-end-12 md:pt-32">
+          <section alt="right" className="row-start-1 md:col-start-7 md:col-end-12 md:pt-32">
             <Img className="grid" fluid={data.file.childImageSharp.fluid} />
+          </section>
+
+          <section className="md:row-start-1 md:col-start-1 md:col-end-6">
+              <BioIntro />
           </section>
         </section>
     </Layout>
