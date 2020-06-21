@@ -7,7 +7,7 @@ module.exports = {
     description:"Co-Founder of upcoming.studio | Riomar McCartney is a British Japanese designer and visual artist based in Tokyo, Japan. His work combines expression, interaction, and engineering explored through product design, graphic design, and media arts.",
     url: "https://riomar.co",
     image: "/thumb.png",
-    connect: [
+    contact: [
       {
           type: "Mobile",
           userName: "+81 (0) 70 2665 2366",
