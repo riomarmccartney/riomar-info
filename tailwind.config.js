@@ -32,8 +32,8 @@ module.exports = {
 
     // tailwindcss-typography // Doc @ https://github.com/benface/tailwindcss-typography
     textIndent: { // defaults to {}
-      '1': '0.25rem',
-      '2': '0.5rem',
+      '1': '0.5rem',
+      '2': '0.75rem',
     },
     textShadow: { // defaults to {}
       'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
