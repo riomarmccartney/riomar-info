@@ -35,6 +35,14 @@ export default function IndexPage() {
 
           <section className="md:row-start-1 md:col-start-1 md:col-end-6">
               <BioIntro />
+              <div className="font-medium mt-12 mb-2">Archive directory</div>
+
+              <section className="pl-8">
+                <div>
+                  <span className="text-left">ookami / Visual identity</span>
+                  <span className="text-left text-xs ml-1"><span className="text-small">[</span>NOV 2013<span className="text-small">]</span></span>
+                </div>
+              </section>
           </section>
         </section>
     </Layout>
