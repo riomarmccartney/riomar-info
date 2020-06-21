@@ -30,7 +30,7 @@ const Nav = ({coverDesign}) => {
     return (
         <div className="w-full relative">
           <nav className={`py-6 grid grid-cols-12 grid-rows-2 col-gap-2 md:col-gap-4 whitespace-no-wrap w-full ${coverDesign ? "md:absolute" : "md:static"}`}>
-              <span className="col-start-7 md:col-start-8 row-start-1"><Clock format={"HH:mm"} timezone={"Asia/Tokyo"} /><span className="text-xs ml-1">[東京]</span></span>
+              <span className="col-start-7 md:col-start-8 row-start-1"><Clock format={"HH:mm"} timezone={"Asia/Tokyo"} /><span className="text-small ml-1">[<span className="text-xs">東京</span>]</span></span>
               {links.map(link => {
                 return link.betweenPages ? (
                   <Link key={link.id} to={link.path} className={link.style}> {link.title}</Link>
