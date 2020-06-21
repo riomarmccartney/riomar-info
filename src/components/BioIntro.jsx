@@ -8,7 +8,7 @@ const BioIntro = () => {
 
   return (
     <section className="grid row-gap-4">
-      <p>Riomar McCartney is a English Japanese designer with a great passion for visual arts. His work principally combines interaction design, strategy, and engineering explored through product design and creative directions. <br /> Living and working in Tokyo, Japan.</p>
+      <p>Riomar McCartney is a English Japanese designer with a great passion for visual arts. His work principally combines interaction design, strategy, and engineering explored through product design and creative directions. Living and working in Tokyo, Japan.</p>
 
       {showInformation
         ? <>
