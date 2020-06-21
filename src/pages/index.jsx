@@ -1,8 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Layout from "../components/layout"
-import Nav from "../components/nav"
-import Information from "../components/information"
+import Layout from "../components/Layout"
+import Nav from "../components/Navigation"
+import BioIntro from "../components/BioIntro"
 import SEO from "../components/SEO"
 import Img from "gatsby-image"
 
