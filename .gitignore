@@ -55,7 +55,6 @@ typings/
 .env
 
 # gatsby files
-.cache/
 public/
 
 # Mac files
@@ -68,5 +67,4 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-.now
-.next
+.vercel
