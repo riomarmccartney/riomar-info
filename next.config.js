@@ -1,11 +1,5 @@
-const path = require("path");
+/** @type {import('next').NextConfig} */
 
 module.exports = {
-  webpack(config) {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      src: path.join(__dirname, "src/"),
-    };
-    return config;
-  },
-};
+  reactStrictMode: true,
+}
