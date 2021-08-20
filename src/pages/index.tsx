@@ -11,7 +11,7 @@ dayjs.extend(timezone)
 
 const graphcms = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHCMS_URL)
 
-export const getStaticProps: GetStaticProps = async () => {  
+export const getStaticProps: GetStaticProps = async (context) => {  
   
   const { notes } = await graphcms.request(
     `
