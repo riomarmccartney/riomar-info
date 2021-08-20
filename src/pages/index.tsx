@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Index = ({ timeline }) => {
   return timeline.map(({ title, slug, date, content, caption}) => (
-    <article>
+    <article key={slug} >
       <h2>{title}</h2>
       <span>{date}</span>
       <MDXRemote {...content} /> 
