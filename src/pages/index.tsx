@@ -24,7 +24,7 @@ interface INote {
   }
 }
 
-export default function Wall({ wall }: { wall: any}) {
+export default function Index({ wall }: { wall: any}) {
   return wall.map(({ note }: { note: INote } ) => (
       <article key={note.slug} >
         <h2>{note.title}</h2>
