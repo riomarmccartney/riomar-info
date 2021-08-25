@@ -1,7 +1,7 @@
-import { serialize } from 'next-mdx-remote/serialize'
 import { GetStaticProps } from "next"
-import { MDXRemote } from 'next-mdx-remote'
 import { GraphQLClient, gql } from 'graphql-request'
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote } from 'next-mdx-remote'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
