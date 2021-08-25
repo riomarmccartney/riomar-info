@@ -24,7 +24,7 @@ interface INote {
   }
 }
 
-export default function Index({ wall }: { wall: any}) {
+export default function Index({ wall }: { wall: any }) {
   return wall.map(({ note }: { note: INote } ) => (
       <article key={note.slug} >
         <h2>{note.title}</h2>
@@ -93,7 +93,6 @@ export const getStaticProps: GetStaticProps = async () => {
   }))
 
   return {
-    props: { wall },
-    revalidate: 60 * 60,
+    props: { wall }
   }
 }
