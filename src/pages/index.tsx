@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { serialize } from 'next-mdx-remote/serialize'
 import { GetStaticProps } from "next"
 import { MDXRemote } from 'next-mdx-remote'
