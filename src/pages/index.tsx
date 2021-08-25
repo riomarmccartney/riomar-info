@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { serialize } from 'next-mdx-remote/serialize'
 import { GetStaticProps } from "next"
 import { MDXRemote } from 'next-mdx-remote'
-import { GraphQLClient } from 'graphql-request'
+import { GraphQLClient, gql } from 'graphql-request'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
@@ -10,72 +10,90 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 
 const graphcms = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHCMS_URL)
+interface INote {
+  slug: string
+  title: string
+  publishedAt: string
+  content: { 
+    markdown: string,
+    compiledSource: string,
+  }
+  caption: { 
+    markdown: string,
+    compiledSource: string,
+  }
+}
 
-export const getStaticProps: GetStaticProps = async (context) => {  
-  
-  const { notes } = await graphcms.request(
-    `
-      { 
-        notes(orderBy: publishedAt_DESC) {
-          slug
-        }
+export default function Wall({ wall }: { wall: any}) {
+  return wall.map(({ note }: { note: INote } ) => (
+      <article key={note.slug} >
+        <h2>{note.title}</h2>
+        <span>{note.publishedAt}</span>
+        <MDXRemote {...note.content} /> 
+        <MDXRemote {...note.caption} /> 
+      </article>
+    ))
+}
+
+export const getStaticProps: GetStaticProps = async () => { 
+  const query = gql`
+    query Notes { 
+      notes(orderBy: publishedAt_DESC) {
+        slug
       }
-    `,
-  )
+    }
+  `
 
+  const { notes } = await graphcms.request(query)
 
-  const timeline = await Promise.all(notes.map(async ({ slug }) => {
-    const {note} = await graphcms.request(
-      `
-        query ($slug: String!) {
-          note(where: { slug: $slug }) {
-            slug
-            title
-            publishedAt
-            content {
-              markdown
-            }
-            caption {
-              markdown
-            }
+  if (!notes) {
+    return {
+      notFound: true,
+    }
+  }
+
+  const wall = await Promise.all(notes.map(async ({ slug }: { slug:string }) => {
+    const query = gql`
+      query Note($slug: String!) {
+        note(where: { slug: $slug }) {
+          slug
+          title
+          publishedAt
+          content {
+            markdown
+          }
+          caption {
+            markdown
           }
         }
-      `,
-        {
-          slug: slug,
-        }
-    )
-    const mdxContent = await serialize(note.content.markdown)
-    const mdxCaption = await serialize(note.caption.markdown)
-    const date = await dayjs(note.publishedAt).tz("Asia/Tokyo").format('YYYY.MM.DD HH:mm')
-      
+      }
+    `
 
+    const data: { note: INote | null } = await graphcms.request(query, { slug: slug })
+
+    if (!data.note) {
+      return {
+        notFound: true,
+      }
+    }
+
+    const date = await dayjs(data.note.publishedAt).tz("Asia/Tokyo").format('YYYY.MM.DD HH:mm')
+    const mdxContent = await serialize(data.note.content.markdown)
+    const mdxCaption = await serialize(data.note.caption.markdown)
+
+    
     return {
-      ...note,
-      ...{date},
+      note: {
+      ...data.note,
+      ...{publishedAt: date},
       ...{content: mdxContent},
       ...{caption: mdxCaption}
+      }
     }
   }))
 
   return {
-    props: {
-      timeline,
-    },
+    props: { wall },
+    revalidate: 60 * 60,
   }
-  
 }
-
-
-const Index = ({ timeline }) => {
-  return timeline.map(({ title, slug, date, content, caption}) => (
-    <article key={slug} >
-      <h2>{title}</h2>
-      <span>{date}</span>
-      <MDXRemote {...content} /> 
-      <MDXRemote {...caption} /> 
-    </article>
-  ))
-}
-
-export default Index
