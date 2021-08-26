@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     `
 
-    const data: { note: INote | null } = await graphcms.request(query, { slug: slug })
+    const data: { note: NoteType | null } = await graphcms.request(query, { slug: slug })
 
     if (!data.note) {
       return {
