@@ -1,36 +1,21 @@
 import { GetStaticProps } from "next"
 import { GraphQLClient, gql } from 'graphql-request'
 import { serialize } from 'next-mdx-remote/serialize'
-import { MDXRemote } from 'next-mdx-remote'
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-import timezone from 'dayjs/plugin/timezone'
-dayjs.extend(utc)
-dayjs.extend(timezone)
+import { Note } from "src/components/Note"
+import { NoteType } from "src/types/note"
 
 const graphcms = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHCMS_URL)
-interface INote {
-  slug: string
-  title: string
-  publishedAt: string
-  content: { 
-    markdown: string,
-    compiledSource: string,
-  }
-  caption: { 
-    markdown: string,
-    compiledSource: string,
-  }
-}
 
-export default function Index({ wall }: { wall: any }) {
-  return wall.map(({ note }: { note: INote } ) => (
-      <article key={note.slug} >
-        <h2>{note.title}</h2>
-        <span>{note.publishedAt}</span>
-        <MDXRemote {...note.content} /> 
-        <MDXRemote {...note.caption} /> 
-      </article>
+export default function Wall({ wall }: { wall: any }) {
+  return wall.map(({ note }: { note: NoteType } ) => (
+      <Note 
+        key={note.slug}
+        slug={note.slug}
+        title={note.title} 
+        publishedAt={note.publishedAt}
+        article={note.article}
+        caption={note.caption}
+      />
     ))
 }
 
@@ -58,7 +43,7 @@ export const getStaticProps: GetStaticProps = async () => {
           slug
           title
           publishedAt
-          content {
+          article {
             markdown
           }
           caption {
@@ -76,16 +61,15 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     }
 
-    const date = await dayjs(data.note.publishedAt).tz("Asia/Tokyo").format('YYYY.MM.DD HH:mm')
-    const mdxContent = await serialize(data.note.content.markdown)
+    const mdxContent = await serialize(data.note.article.markdown)
     const mdxCaption = await serialize(data.note.caption.markdown)
 
     
     return {
       note: {
       ...data.note,
-      ...{publishedAt: date},
-      ...{content: mdxContent},
+      //...{publishedAt: date},
+      ...{article: mdxContent},
       ...{caption: mdxCaption}
       }
     }
