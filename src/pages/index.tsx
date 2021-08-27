@@ -61,15 +61,14 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     }
 
-    const mdxContent = await serialize(data.note.article.markdown)
+    const mdxArticle = await serialize(data.note.article.markdown)
     const mdxCaption = await serialize(data.note.caption.markdown)
 
     
     return {
       note: {
       ...data.note,
-      //...{publishedAt: date},
-      ...{article: mdxContent},
+      ...{article: mdxArticle},
       ...{caption: mdxCaption}
       }
     }
