@@ -1,7 +1,8 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      NEXT_PUBLIC_GRAPHCMS_URL: string
+      NEXT_PUBLIC_PRISMIC_API_URL: string
+      NEXT_PUBLIC_PRISMIC_API_TOKEN: string
       NODE_ENV: 'development' | 'production'
     }
   }
