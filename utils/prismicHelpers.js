@@ -4,8 +4,8 @@ import {
   apiEndpoint,
   accessToken,
   linkResolver,
-  hrefResolver
-} from 'prismic-configuration'
+  hrefResolver,
+} from '../prismic-config'
 
 // Helper function to convert Prismic Rich Text links to Next/Link components
 export const customLink = (type, element, content, children, index) => (
@@ -18,14 +18,14 @@ export const customLink = (type, element, content, children, index) => (
   </Link>
 )
 
-// Client method to query documents from the Prismic repo
-export const Client = (req = null) => (
+export const Client = (req = null) =>
   Prismic.client(apiEndpoint, createClientOptions(req, accessToken))
-)
 
 const createClientOptions = (req = null, prismicAccessToken = null) => {
   const reqOption = req ? { req } : {}
-  const accessTokenOption = prismicAccessToken ? { accessToken: prismicAccessToken } : {}
+  const accessTokenOption = prismicAccessToken
+    ? { accessToken: prismicAccessToken }
+    : {}
   return {
     ...reqOption,
     ...accessTokenOption,
