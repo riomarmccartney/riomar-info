@@ -1,7 +1,9 @@
+import { ReactNode } from "react";
+
 export type NoteType = {
   uid: string,
   date: string,
-  title: any[],
-  article: any[],
-  caption: any[]
+  title: string,
+  article: ReactNode,
+  caption: ReactNode,
 }
