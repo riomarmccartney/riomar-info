@@ -4,7 +4,7 @@ import { Client } from 'utils/prismicHelpers'
 import { Note } from 'src/components/Note'
 import { RichText } from 'prismic-reactjs'
 
-export default function Wall({ notes }: { notes: any[] }) {
+export default function Wall({ notes }) {
   return notes.map((note ) => {
     return (
       <Note 

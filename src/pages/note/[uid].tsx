@@ -4,7 +4,11 @@ import { Note } from 'src/components/Note'
 import Client from 'utils/prismicHelpers'
 import { RichText } from 'prismic-reactjs'
 
-export default function NotePage({ note }: { note }) {
+type ParameterType = {
+  uid: string
+}
+
+export default function NotePage({ note }) {
   return (
     <Note 
       uid={note.uid}
@@ -17,7 +21,7 @@ export default function NotePage({ note }: { note }) {
   
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }: { params : ParameterType }) => {
 
   const note = await Client().getByUID('note', params.uid, {})
 
