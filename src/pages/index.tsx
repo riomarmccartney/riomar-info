@@ -5,7 +5,7 @@ import { Note } from "src/components/Note"
 import { NoteType } from "src/types/note"
 
 export default function Wall({ notes }: { notes: any[] }) {
-  return notes.map((note: any[] ) => {
+  return notes.map((note: NoteType ) => {
     return (
       <Note 
         key={note.uid}
@@ -26,6 +26,8 @@ export const getStaticProps: GetStaticProps = async () => {
       notFound: true,
     }
   }
+
+  console.log(results[0].data.article)
 
   return {
     props: { notes: results }
