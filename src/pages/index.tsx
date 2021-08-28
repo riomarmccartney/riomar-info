@@ -28,8 +28,6 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   }
 
-  console.log(results[0].data.article)
-
   return {
     props: { notes: results }
   }

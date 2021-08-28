@@ -21,7 +21,7 @@ export default function NotePage({ note }) {
   
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }: { params : ParameterType }) => {
+export const getStaticProps: GetStaticProps = async ({ params }: { params: ParameterType }) => {
 
   const note = await Client().getByUID('note', params.uid, {})
 
