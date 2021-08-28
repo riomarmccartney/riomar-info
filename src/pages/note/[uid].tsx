@@ -1,18 +1,17 @@
 import Prismic from '@prismicio/client'
-import { GetStaticPaths, GetStaticProps } from "next";
-import { serialize } from 'next-mdx-remote/serialize'
-import { Note } from "src/components/Note";
-import { NoteType } from "src/types/note";
-import Client from "utils/prismicHelpers";
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { Note } from 'src/components/Note'
+import Client from 'utils/prismicHelpers'
+import { RichText } from 'prismic-reactjs'
 
-export default function NotePage({ note }: { note: NoteType }) {
+export default function NotePage({ note }: { note }) {
   return (
     <Note 
-      key={note.uid}
-      title={note.data.title} 
+      uid={note.uid}
+      title={RichText.asText(note.data.title)}
       date={note.first_publication_date}
-      article={note.data.article}
-      caption={note.data.caption}
+      article={RichText.render(note.data.article)}
+      caption={RichText.render(note.data.caption)}
     />
   )
   
