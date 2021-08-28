@@ -1,80 +1,33 @@
 import { GetStaticProps } from "next"
-import { GraphQLClient, gql } from 'graphql-request'
-import { serialize } from 'next-mdx-remote/serialize'
+import Prismic from '@prismicio/client'
+import { Client } from 'utils/prismicHelpers'
 import { Note } from "src/components/Note"
 import { NoteType } from "src/types/note"
 
-const graphcms = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHCMS_URL)
-
-export default function Wall({ wall }: { wall: any }) {
-  return wall.map(({ note }: { note: NoteType } ) => (
+export default function Wall({ notes }: { notes: any[] }) {
+  return notes.map((note: any[] ) => {
+    return (
       <Note 
-        key={note.slug}
-        slug={note.slug}
-        title={note.title} 
-        publishedAt={note.publishedAt}
-        article={note.article}
-        caption={note.caption}
+        key={note.uid}
+        title={note.data.title} 
+        date={note.first_publication_date}
+        article={note.data.article}
+        caption={note.data.caption}
       />
-    ))
+    )}
+  )
 }
 
 export const getStaticProps: GetStaticProps = async () => { 
-  const query = gql`
-    query Notes { 
-      notes(orderBy: publishedAt_DESC) {
-        slug
-      }
-    }
-  `
+  const { results } = await Client().query(Prismic.Predicates.at('document.type', 'note'))
 
-  const { notes } = await graphcms.request(query)
-
-  if (!notes) {
+  if (!results) {
     return {
       notFound: true,
     }
   }
 
-  const wall = await Promise.all(notes.map(async ({ slug }: { slug:string }) => {
-    const query = gql`
-      query Note($slug: String!) {
-        note(where: { slug: $slug }) {
-          slug
-          title
-          publishedAt
-          article {
-            markdown
-          }
-          caption {
-            markdown
-          }
-        }
-      }
-    `
-
-    const data: { note: NoteType | null } = await graphcms.request(query, { slug: slug })
-
-    if (!data.note) {
-      return {
-        notFound: true,
-      }
-    }
-
-    const mdxArticle = await serialize(data.note.article.markdown)
-    const mdxCaption = await serialize(data.note.caption.markdown)
-
-    
-    return {
-      note: {
-      ...data.note,
-      ...{article: mdxArticle},
-      ...{caption: mdxCaption}
-      }
-    }
-  }))
-
   return {
-    props: { wall }
+    props: { notes: results }
   }
 }
