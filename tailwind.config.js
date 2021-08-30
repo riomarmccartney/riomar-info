@@ -5,7 +5,14 @@ module.exports = {
     fontFamily: {
       typeface: ['Inter', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      fontSize: {
+        xxs: '0.5rem',
+      },
+      letterSpacing: {
+        inter: '0.011em',
+      },
+    },
   },
   variants: {
     extend: {},
