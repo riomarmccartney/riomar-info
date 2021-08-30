@@ -3,6 +3,7 @@ import Prismic from '@prismicio/client'
 import { Client } from 'utils/prismicHelpers'
 import { Note } from 'src/components/Note'
 import { RichText } from 'prismic-reactjs'
+import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 
 export default function Wall({ notes }) {
   return notes.map((note ) => {
@@ -12,8 +13,8 @@ export default function Wall({ notes }) {
         uid={note.uid}
         title={RichText.asText(note.data.title)}
         date={note.first_publication_date}
-        article={RichText.render(note.data.article)}
-        caption={RichText.render(note.data.caption)}
+        article={<RichText render={note.data.article} htmlSerializer={htmlSerializer} />}
+        caption={<RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
       />
     )}
   )
