@@ -8,9 +8,9 @@ import {
 } from '../prismic-config'
 
 // Helper function to convert Prismic Rich Text links to Next/Link components
-export const customLink = (type, element, content, children, index) => (
+export const nextLinkResolver = (type, element, content, children, index) => (
   <Link
-    key={index}
+    key={element.data.id}
     href={hrefResolver(element.data)}
     as={linkResolver(element.data)}
   >
