@@ -5,4 +5,9 @@ import timezone from 'dayjs/plugin/timezone'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-export const dateFormatter = ({ date, format }) => dayjs(date).tz('Asia/Tokyo').format(format || 'YYYY-MM-DD HH:mm')
+type dateFormatterType = {
+  date: string,
+  format?: string,
+}
+
+export const dateFormatter = ({ date, format }: dateFormatterType) => dayjs(date).tz('Asia/Tokyo').format(format || 'YYYY-MM-DD HH:mm')
