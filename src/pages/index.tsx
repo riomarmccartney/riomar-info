@@ -1,4 +1,6 @@
 import { GetStaticProps } from 'next'
+import SliceZone from 'next-slicezone'
+import resolver from 'utils/sliceMachineResolver'
 import Prismic from '@prismicio/client'
 import { Client } from 'utils/prismicHelpers'
 import { Note } from 'src/components/Note'
@@ -18,7 +20,7 @@ export default function Index({ notes }) {
             uid={note.uid}
             title={RichText.asText(note.data.title)}
             date={note.first_publication_date}
-            article={<RichText render={note.data.article} htmlSerializer={htmlSerializer} />}
+            article={<SliceZone resolver={resolver} slices={note.data.body}/>}
             caption={<RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
           />
         ))}
@@ -29,14 +31,15 @@ export default function Index({ notes }) {
 
 export const getStaticProps: GetStaticProps = async () => { 
   const { results } = await Client().query(Prismic.Predicates.at('document.type', 'note'))
+  const notes = results
 
-  if (!results) {
+  if (!notes) {
     return {
       notFound: true,
     }
   }
 
   return {
-    props: { notes: results }
+    props: { notes: notes }
   }
 }
