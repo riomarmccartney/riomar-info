@@ -4,7 +4,7 @@ const __allSlices = { ...Slices }
 
 const NotFound = ({ sliceName, slice, i }) => {
   console.error(
-    `[sm-resolver] component "${sliceName}" not found at index ${i}.`,
+    `[sm-resolver] component '${sliceName}' not found at index ${i}.`,
   )
   console.warn(`slice data: ${slice}`)
   return process.env.NODE_ENV !== 'production' ? (
@@ -19,7 +19,7 @@ const NotFound = ({ sliceName, slice, i }) => {
         background: '#FAFAFA',
       }}
     >
-      <h2>Slice "{sliceName}" not found.</h2>
+      <h2>Slice '{sliceName}' not found.</h2>
       <p style={{ maxWidth: '320px', fontSize: '16px' }}>
         Check that you registered this component in your slices library!
       </p>

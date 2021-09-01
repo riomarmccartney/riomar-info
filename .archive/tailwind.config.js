@@ -20,14 +20,14 @@ module.exports = {
       '7xl': '5rem',
     },
     letterSpacing: {
-      normal: "-0.008em",
-      wide: "0.01em"
+      normal: '-0.008em',
+      wide: '0.01em'
     },
     strokeWidth: {
-      "1": "0.02rem"
+      '1': '0.02rem'
     },
     fill: {
-      "transparent": "theme(\"colors.transparent\")"
+      'transparent': 'theme(\'colors.transparent\')'
     },
 
     // tailwindcss-typography // Doc @ https://github.com/benface/tailwindcss-typography
@@ -78,12 +78,12 @@ module.exports = {
     },
     extend: {
       spacing: {
-        "3/4": "66.6666%",
-        "4/3": "133.3333%",
-        "full": "100%",
+        '3/4': '66.6666%',
+        '4/3': '133.3333%',
+        'full': '100%',
       },
       textStrokeWidth: {
-        "1": "1px",
+        '1': '1px',
       },
     },
   },
