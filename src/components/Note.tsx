@@ -1,9 +1,11 @@
+import { atomicSpacing } from 'src/constants/spacing'
 import { NoteType } from 'src/types/note'
 import { dateFormatter } from 'utils/dateFormatter'
 
+
 export const Note = ({title, article, caption, date, uid}: NoteType) => {
   return (
-    <article className="space-y-8">
+    <article id={uid} className={atomicSpacing}>
       <div className="max-w-xl">
         <span>{dateFormatter({date})}</span>
         <h2 >{title}</h2>
