@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { atomicSpacing, molecularSpacing } from 'src/constants/spacing'
 
 type CategoryType = {
   title: string,
@@ -16,7 +17,7 @@ export const Sidebar = ({ className }: { className: string }) => {
     <div className={className}>
       <Link href="/">Riomar McCartney</Link>
       
-      <div className="space-y-6">
+      <div className={molecularSpacing}>
         <Category
           title="Notes"
           content={[
@@ -43,16 +44,13 @@ export const Sidebar = ({ className }: { className: string }) => {
   )
 }
 
-const Category = ({title, content}: CategoryType) => {
-  const list = 
-    content.map(({title, link, uid}: CategoryListType) => (
-      <li key={uid}><Link href={link} as={link}>{title}</Link></li>
-    ))
-  
-  return (
-    <div>
-      <span className="font-semibold leading-6 uppercase text-xxs">{title}</span>
-      <ul className="pl-2">{list}</ul>
-    </div>
-  )
-}
+const Category = ({title, content}: CategoryType) => (
+  <figure className={atomicSpacing}>
+    <figcaption className="font-semibold leading-6 uppercase text-xxs">{title}</figcaption>
+    <ul className="pl-2">
+      {content.map(({title, link, uid}: CategoryListType) => (
+        <li key={uid}><Link href={link} as={link}>{title}</Link></li>
+      ))}
+    </ul>
+  </figure>
+)

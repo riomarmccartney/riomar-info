@@ -1,5 +1,7 @@
 import { ReactNode } from 'react'
 import { Sidebar } from './Sidebar'
+import clsx from 'clsx'
+import { elementSpacing } from 'src/constants/spacing'
 
 type LayoutType = {
   children: ReactNode,
@@ -8,13 +10,11 @@ type LayoutType = {
 
 export const Layout = ({ children }: LayoutType) => {
   return (
-    <div className="flex flex-row w-full h-screen text-base divide-x divide-black font-regular font-typeface tracking-base">
-      <Sidebar className="w-1/5 max-w-sm py-8 pl-8 pr-16 space-y-24 min-w-min whitespace-nowrap" />
+    <div className="flex flex-row h-screen text-base divide-x divide-black font-regular font-typeface tracking-base">
+      <Sidebar className={clsx('w-1/5 py-8 pl-8 pr-24 min-w-min whitespace-nowrap max-w-sm', elementSpacing)}/>
 
-      <div className="flex-1 py-8 pl-8 pr-24 overflow-y-scroll">
-        <div className="space-y-24 max-w-7xl">
-          {children}
-        </div>
+      <div className={clsx('flex-1 py-8 pl-8 pr-24 overflow-y-scroll max-w-7xl', elementSpacing)}>
+        {children}
       </div>
     </div>
   )
