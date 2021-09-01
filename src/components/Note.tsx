@@ -1,5 +1,4 @@
-import clsx from 'clsx'
-import { atomicSpacing, molecularSpacing } from 'src/constants/spacing'
+import { molecularSpacing } from 'src/constants/spacing'
 import { NoteType } from 'src/types/note'
 import { dateFormatter } from 'utils/dateFormatter'
 
