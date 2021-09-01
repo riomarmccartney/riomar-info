@@ -36,8 +36,6 @@ export const getStaticProps: GetStaticProps = async ({ params }: { params: Param
 export const getStaticPaths: GetStaticPaths = async () => {
   const notes = await Client().query(Prismic.Predicates.at('document.type', 'note'))
 
-  console.log()
-
   return {
     paths: notes.results.map((note) => {
       return { params: { uid: note.uid }}
