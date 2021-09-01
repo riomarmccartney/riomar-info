@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { atomicSpacing, molecularSpacing } from 'src/constants/spacing'
+import { molecularSpacing, atomicSpacing } from 'src/constants/spacing'
 
 type CategoryType = {
   title: string,
