@@ -7,7 +7,7 @@ export const Note = ({title, article, caption, date, uid}: NoteType) => {
   return (
     <article id={uid} className={(molecularSpacing)}>
       <div className='w-1/2 mr-6'>
-        <span>{dateFormatter({date})}</span>
+        <span>{dateFormatter(date)}</span>
         <h2 >{title}</h2>
       </div>
       {article}
