@@ -24,6 +24,6 @@ export const Clock = () => {
   const hour = time.format('HH')
   const min = time.format('mm')
 
-  return <span>{day} {hour}<span className={clsx(tick ? 'opacity-100' : 'opacity-0', 'transition-opacity duration-1000')}>:</span>{min}</span>
+  return <span>{day} {hour}<span className={clsx(tick ? 'opacity-100' : 'opacity-25', 'transition-opacity duration-1000')}>:</span>{min}</span>
 
 }
