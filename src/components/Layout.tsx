@@ -36,7 +36,7 @@ export const Layout = ({ children }: LayoutType) => {
   return (
     <div className="flex flex-row w-full h-screen text-base divide-x divide-black font-regular font-typeface tracking-base">
       <div className="w-1/5 py-8 pl-12 space-y-24">
-        <Link href="/"><span>Riomar McCartney</span></Link>
+        <Link href="/">Riomar McCartney</Link>
         
         <div className="space-y-6">
           <Category
