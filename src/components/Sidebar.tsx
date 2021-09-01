@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from 'next/link'
 
 type CategoryType = {
   title: string,
@@ -11,34 +11,34 @@ type CategoryListType = {
   uid: string,
 }
 
-export const Sidebar = ({ className }) => {
+export const Sidebar = ({ className }: { className: string }) => {
   return (
     <div className={className}>
       <Link href="/">Riomar McCartney</Link>
       
       <div className="space-y-6">
-          <Category
-            title="Notes"
-            content={[
-              {
-                title: "2020-01-04",
-                link: "/note/greetings",
-                uid: "greetings"
-              }
-            ]}
-          />
+        <Category
+          title="Notes"
+          content={[
+            {
+              title: '2020-01-04',
+              link: '/note/greetings',
+              uid: 'greetings'
+            }
+          ]}
+        />
 
-          <Category
-            title="Work"
-            content={[
-              {
-                title: "2020-01-04",
-                link: "/note/greetings",
-                uid: "greetings"
-              }
-            ]}
-          />
-        </div>
+        <Category
+          title="Work"
+          content={[
+            {
+              title: '2020-01-04',
+              link: '/note/greetings',
+              uid: 'greetings'
+            }
+          ]}
+        />
+      </div>
     </div>
   )
 }
