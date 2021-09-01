@@ -7,9 +7,10 @@ import Client from 'utils/prismicHelpers'
 import { RichText } from 'prismic-reactjs'
 import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 import { Layout } from 'src/components/Layout'
+import { ParsedUrlQuery } from 'querystring'
 
-type ParameterType = {
-  uid: string
+interface IParams extends ParsedUrlQuery {
+    uid: string
 }
 
 export default function NotePage({ note }: any) {
@@ -28,9 +29,9 @@ export default function NotePage({ note }: any) {
   
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }: { params: ParameterType }) => {
-
-  const note = await Client().getByUID('note', params.uid, {})
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { uid } = context.params as IParams
+  const note = await Client().getByUID('note', uid, {})
 
   return {
     props: { 
@@ -41,11 +42,13 @@ export const getStaticProps: GetStaticProps = async ({ params }: { params: Param
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const notes = await Client().query(Prismic.Predicates.at('document.type', 'note'))
+  
+  const paths = notes.results.map((note) => {
+    return { 
+      params: { uid: note.uid }
+      
+    }
+  })
 
-  return {
-    paths: notes.results.map((note) => {
-      return { params: { uid: note.uid }}
-    }),
-    fallback: false,
-  }
+  return { paths, fallback: false }
 }
