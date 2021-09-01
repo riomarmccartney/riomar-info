@@ -9,7 +9,7 @@
      "semi": "off",
     "indent": [
       "error",
-      "2"
+      2
     ],
     "no-multi-spaces": "error",
     "space-in-brackets": ["error", "always"]
