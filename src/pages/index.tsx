@@ -10,7 +10,6 @@ import { Layout } from 'src/components/Layout'
 import { Clock } from 'src/components/UI/Clock'
 
 export default function Index({ notes }: { notes: any }) {
-
   return (
     <Layout>
       <Clock />
