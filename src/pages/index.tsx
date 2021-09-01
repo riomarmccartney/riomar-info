@@ -7,15 +7,15 @@ import { Note } from 'src/components/Note'
 import { RichText } from 'prismic-reactjs'
 import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 import { Layout } from 'src/components/Layout'
-import { dateFormatter } from 'utils/dateFormatter'
+import { Clock } from 'src/components/UI/Clock'
 
 export default function Index({ notes }: { notes: any }) {
+
   return (
     <Layout>
-      <div>Updated: {dateFormatter(notes[0].first_publication_date)}</div>
+      <Clock />
       {notes.map((note: any) => {
         return (
-
           <Note 
             key={note.uid}
             uid={note.uid}
@@ -24,9 +24,8 @@ export default function Index({ notes }: { notes: any }) {
             article={<SliceZone resolver={resolver} slices={note.data.body}/>}
             caption={<RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
           />
-            
-
-        )})}
+        )}
+      )}
     </Layout>
   )
 }
