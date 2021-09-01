@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next'
-import SliceZone from 'next-slicezone'
 import resolver from 'utils/sliceMachineResolver'
 import Prismic from '@prismicio/client'
 import { Client } from 'utils/prismicHelpers'
@@ -8,23 +7,26 @@ import { RichText } from 'prismic-reactjs'
 import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 import { Layout } from 'src/components/Layout'
 import { dateFormatter } from 'utils/dateFormatter'
+import { molecularSpacing } from 'src/constants/spacing'
+import SliceZone from 'next-slicezone'
 
-export default function Index({ notes }) {
+export default function Index({ notes }: { notes: any }) {
   return (
     <Layout>
       <div>Updated: {dateFormatter(notes[0].first_publication_date)}</div>
-      <div>
-        {notes.map((note) => (
-          <Note 
-            key={note.uid}
-            uid={note.uid}
-            title={RichText.asText(note.data.title)}
-            date={note.first_publication_date}
-            article={<SliceZone resolver={resolver} slices={note.data.body}/>}
-            caption={<RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
-          />
-        ))}
-        </div>
+      <section className={molecularSpacing}>
+        {notes.map((note: any) => {
+          return (
+            <Note 
+              key={note.uid}
+              uid={note.uid}
+              title={RichText.asText(note.data.title)}
+              date={note.first_publication_date}
+              article={<SliceZone resolver={resolver} slices={note.data.body}/>}
+              caption={<RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
+            />
+          )})}
+      </section>
     </Layout>
   )
 }
