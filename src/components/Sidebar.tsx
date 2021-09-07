@@ -1,56 +1,63 @@
 import Link from 'next/link'
+import { RichText } from 'prismic-reactjs'
 import { molecularSpacing, atomicSpacing } from 'src/constants/spacing'
+import { dateFormatter } from 'utils/dateFormatter'
 
-type CategoryType = {
-  title: string,
-  content: any[]
+type TagListType = {
+  title: any,
+  content: any,
 }
     
-type CategoryListType = {
-  title: string,
-  link: string,
+type NoteType = {
+  first_publication_date: string,
   uid: string,
+  tags: any[],
+  data: {
+    title: any[]
+  }
 }
 
-export const Sidebar = ({ className }: { className: string }) => {
+type SidebarType = {
+  className?: string,
+  notes: any,
+}
+
+export const Sidebar = ({ className, notes }: SidebarType) => {
+  const tags = ['Notes', 'Work']
+
   return (
     <div className={className}>
       <Link href='/'>Riomar McCartney</Link>
-      
       <div className={molecularSpacing}>
-        <Category
-          title='Notes'
-          content={[
-            {
-              title: '2020-01-04',
-              link: '/note/greetings',
-              uid: 'greetings'
-            }
-          ]}
-        />
-
-        <Category
-          title='Work'
-          content={[
-            {
-              title: '2020-01-04',
-              link: '/note/greetings',
-              uid: 'greetings'
-            }
-          ]}
-        />
+        {tags.map((tag, i) => {
+          return (
+            <TagList 
+              key={i}
+              title={tag}
+              content={notes}
+            />
+          )
+        })}
       </div>
     </div>
   )
 }
 
-const Category = ({title, content}: CategoryType) => (
+const TagList = ({title, content}: TagListType) => (
   <figure className={atomicSpacing}>
-    <figcaption className='font-semibold leading-6 uppercase text-xxs'>{title}</figcaption>
+    <figcaption className='absolute -mt-6 font-semibold leading-6 uppercase text-xxs'>{title}</figcaption>
+    
     <ul className='pl-2'>
-      {content.map(({title, link, uid}: CategoryListType) => (
-        <li key={uid}><Link href={link} as={link}>{title}</Link></li>
-      ))}
+      {content.map(({uid, tags, first_publication_date, data}: NoteType) => {
+        const tag = tags[0] || 'Notes'
+
+        if (tag == title) {
+          return (
+            <li key={uid}><Link href={'/note/' + uid}>{tags[0] ? RichText.asText(data.title) : dateFormatter(first_publication_date)}</Link></li>
+          )
+        }
+        return
+      })}
     </ul>
   </figure>
 )
