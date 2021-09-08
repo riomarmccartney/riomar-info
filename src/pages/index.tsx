@@ -7,18 +7,19 @@ import { Note } from 'src/components/Note'
 import { RichText } from 'prismic-reactjs'
 import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 import { Layout } from 'src/components/Layout'
-import { Clock } from 'src/components/UI/Clock'
 import { Sidebar } from 'src/components/Sidebar'
-import { elementSpacing } from 'src/constants/spacing'
+import { universeSpacing } from 'src/constants/spacing'
 import clsx from 'clsx'
+import { Intro } from 'src/components/Intro'
 
-export default function Index({ notes }: { notes: any }) {
+export default function Index({ notes, intro }: { notes: any, intro: any }) {
   return (
     <Layout>
-      <Sidebar notes={notes} className={clsx('w-1/5 py-8 pl-8 pr-24 min-w-min whitespace-nowrap max-w-sm', elementSpacing)}/>
+      <Sidebar notes={notes} className={clsx('w-1/5 py-8 pl-8 pr-24 min-w-min whitespace-nowrap max-w-sm', universeSpacing)}/>
       <main className='flex-1 w-full px-16 py-8 overflow-y-scroll'>
-        <div className={clsx('max-w-7xl mx-auto', elementSpacing)}>
-          <Clock />
+        <div className={clsx(universeSpacing, 'max-w-6xl')}>
+          <Intro content={intro} />
+          
           {notes.map((note: any) => {
             return (
               <Note 
@@ -42,13 +43,16 @@ export const getStaticProps: GetStaticProps = async () => {
   const { results } = await Client().query(Prismic.Predicates.at('document.type', 'note'))
   const notes = results
 
-  if (!notes) {
+  const intro = await Client().getSingle('introduction', {})
+
+  if (!notes || !intro) {
     return {
       notFound: true,
     }
   }
 
   return {
-    props: { notes: notes }
+    props: { notes, intro }
   }
+ 
 }
