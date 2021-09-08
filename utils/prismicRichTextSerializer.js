@@ -1,6 +1,7 @@
 import { createElement } from 'react'
 import { Elements } from 'prismic-richtext'
 import { nextLinkResolver } from './prismicHelpers'
+import Image from 'next/image'
 
 const propsWithUniqueKey = function (props, key) {
   return Object.assign(props || {}, { key })
@@ -16,9 +17,15 @@ export const htmlSerializer = (type, element, content, children, key) => {
       return createElement('p', propsWithUniqueKey(props, key), children)
 
     // Don't wrap images in a <p> tag
-    case Elements.image:
-      props = { src: element.url, alt: element.alt || '' }
-      return createElement('img', propsWithUniqueKey(props, key))
+  case Elements.image:
+    props = { 
+      src: element.url, 
+      alt: element.alt, 
+      height: element.dimensions.height, 
+      width: element.dimensions.width 
+    }
+    
+    return createElement(Image, propsWithUniqueKey(props, key))
 
     // Add a class to hyperlinks
     case Elements.hyperlink:
