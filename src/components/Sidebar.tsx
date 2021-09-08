@@ -56,7 +56,7 @@ const TagList = ({title, content}: TagListType) => {
           )
         return 
       })
-      .filter(list => typeof list !== 'undefined')
+      .filter((list: any) => typeof list !== 'undefined')
   
 
   if (listItem[0]) {
