@@ -27,7 +27,13 @@ export const Sidebar = ({ className, notes }: SidebarType) => {
 
   return (
     <div className={className}>
-      <Link href='/'>Riomar McCartney</Link>
+      <div className="-my-1">
+        <Link href='/' passHref>
+          <a className="table-cell w-8 h-8 -mt-2 leading-none text-center align-middle transition-all duration-150 bg-transparent border border-black rounded-full hover:text-white hover:bg-black ">
+            RM
+          </a>
+        </Link>
+      </div>
 
       <div className={molecularSpacing}>
         {tags.map((tag, i) => {
