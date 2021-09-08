@@ -28,6 +28,7 @@ export const Sidebar = ({ className, notes }: SidebarType) => {
   return (
     <div className={className}>
       <Link href='/'>Riomar McCartney</Link>
+
       <div className={molecularSpacing}>
         {tags.map((tag, i) => {
           return (
@@ -43,21 +44,32 @@ export const Sidebar = ({ className, notes }: SidebarType) => {
   )
 }
 
-const TagList = ({title, content}: TagListType) => (
-  <figure>
-    <figcaption><sup>{title}</sup></figcaption>
-    
-    <ul>
-      {content.map(({uid, tags, first_publication_date, data}: NoteType) => {
+const TagList = ({title, content}: TagListType) => {
+  const listItem = 
+    content
+      .map(({uid, tags, first_publication_date, data}: NoteType) => {
         const tag = tags[0] || 'Notes'
 
-        if (tag == title) {
+        if (tag == title) 
           return (
             <li key={uid}><Link href={'/note/' + uid}>{tags[0] ? RichText.asText(data.title) : dateFormatter(first_publication_date)}</Link></li>
           )
-        }
-        return
-      })}
-    </ul>
-  </figure>
-)
+        return 
+      })
+      .filter(list => typeof list !== 'undefined')
+  
+
+  if (listItem[0]) {
+    return (
+      <figure>
+        <figcaption><sup>{title}</sup></figcaption>
+        
+        <ul>
+          {listItem}
+        </ul>
+      </figure>
+    )
+  }
+
+  return null
+}
