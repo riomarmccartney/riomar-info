@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
-import { molecularSpacing, atomicSpacing } from 'src/constants/spacing'
+import { atomicSpacing, molecularSpacing, subAtomicSpacing } from 'src/constants/spacing'
 import { dateFormatter } from 'utils/dateFormatter'
 
 type TagListType = {
   title: any,
-  content: any,
+  content: any, 
 }
     
 type NoteType = {
@@ -44,10 +44,10 @@ export const Sidebar = ({ className, notes }: SidebarType) => {
 }
 
 const TagList = ({title, content}: TagListType) => (
-  <figure className={atomicSpacing}>
-    <figcaption className='absolute -mt-6 font-semibold leading-6 uppercase text-xxs'>{title}</figcaption>
+  <figure>
+    <figcaption><sup>{title}</sup></figcaption>
     
-    <ul className='pl-2'>
+    <ul>
       {content.map(({uid, tags, first_publication_date, data}: NoteType) => {
         const tag = tags[0] || 'Notes'
 
