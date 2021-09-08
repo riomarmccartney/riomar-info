@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
-import { atomicSpacing, molecularSpacing, subAtomicSpacing } from 'src/constants/spacing'
+import { molecularSpacing } from 'src/constants/spacing'
 import { dateFormatter } from 'utils/dateFormatter'
 
 type TagListType = {
