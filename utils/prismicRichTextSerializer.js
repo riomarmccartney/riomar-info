@@ -11,10 +11,10 @@ export const htmlSerializer = (type, element, content, children, key) => {
   var props = {}
 
   switch (type) {
-    // Add a class to paragraph elements
-    case Elements.paragraph:
-      props = { className: 'paragraph-class' }
-      return createElement('p', propsWithUniqueKey(props, key), children)
+  // Add a class to paragraph elements
+  case Elements.paragraph:
+    props = { className: 'paragraph-class' }
+    return createElement('p', propsWithUniqueKey(props, key), children)
 
     // Don't wrap images in a <p> tag
   case Elements.image:
@@ -44,7 +44,7 @@ export const htmlSerializer = (type, element, content, children, key) => {
       return createElement('a', propsWithUniqueKey(props, key), children)
 
     // Return null to stick with the default behavior
-    default:
-      return null
+  default:
+    return null
   }
 }
