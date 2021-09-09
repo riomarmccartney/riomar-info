@@ -37,7 +37,7 @@ export const htmlSerializer = (type, element, content, children, key) => {
     relAttr = element.data.target ? { rel: 'noopener' } : {}
     props = Object.assign(
       {
-        className: 'transition-all duration-150 bg-transparent border-b border-gray-400 hover:bg-black hover:text-white hover:border-black',
+        className: 'transition-all duration-150 bg-transparent border-b border-gray-400 border-solid hover:bg-black hover:text-white hover:border-black',
         href: element.data.url || nextLinkResolver(element.data),
       },
       targetAttr,
