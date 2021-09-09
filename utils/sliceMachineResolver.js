@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as Slices from '../src/components/slices'
 
 const __allSlices = { ...Slices }
