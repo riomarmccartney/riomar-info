@@ -7,7 +7,6 @@ import { atomicSpacing, subAtomicSpacing, molecularSpacing } from 'src/constants
 import { HorizontalDivider } from './UI/HorizontalDivider'
 
 export const Intro = ({ content }: {content: any}) => {
-  console.log(content.data)
   return (
     <>
       <div>
