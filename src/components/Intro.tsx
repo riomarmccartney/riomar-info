@@ -1,12 +1,14 @@
 import clsx from 'clsx'
 import Image from 'next/image'
-
 import { RichText } from 'prismic-reactjs'
 import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 import { atomicSpacing, subAtomicSpacing, molecularSpacing } from 'src/constants/spacing'
 import { HorizontalDivider } from './UI/HorizontalDivider'
+import { useState } from 'react'
 
 export const Intro = ({ content }: {content: any}) => {
+  const [visiblity, setVisibility] = useState(false)
+
   return (
     <>
       <div>
@@ -33,6 +35,8 @@ export const Intro = ({ content }: {content: any}) => {
                 alt={content.data.profile_picture.alt}
                 height={content.data.profile_picture.dimensions.height}
                 width={content.data.profile_picture.dimensions.width}
+                className={clsx(visiblity ? 'opacity-100' : 'opacity-0', 'transition-opacity duration-500 delay-300')}
+                onLoad={() => setVisibility(true)}
               />
             </div>
           </div>
