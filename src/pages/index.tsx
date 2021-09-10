@@ -40,7 +40,9 @@ export default function Index({ notes, intro }: { notes: any, intro: any }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => { 
-  const { results } = await Client().query(Prismic.Predicates.at('document.type', 'note'))
+  const { results } = await Client().query(Prismic.Predicates.at('document.type', 'note'), {
+    orderings: '[note.first_publication_date]'
+  })
   const notes = results
 
   const intro = await Client().getSingle('introduction', {})
