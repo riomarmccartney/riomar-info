@@ -1,12 +1,17 @@
 import clsx from 'clsx'
 import { RichText } from 'prismic-reactjs'
-import { atomicSpacing } from 'src/constants/spacing'
+import { ReactNode } from 'react'
 import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 
-export const MultiStory = ({ slice }: { slice: any }) => (
-  <div className='flex flex-row space-x-8'>
-    {slice.items?.map(({ paragraph }: any, i: number) => (
-      <div key={i} className={clsx('flex-1 w-1/2', atomicSpacing)}><RichText render={paragraph} htmlSerializer={htmlSerializer} /></div>
-    ))}
+type MultiStoryType = {
+  slice?: any,
+  children?: ReactNode,
+}
+
+export const MultiStory = ({ slice, children }: MultiStoryType) => (
+  <div className='flex flex-col lg:space-x-8 lg:flex-row'>
+    {slice?.items?.map(({ paragraph }: any, i: number) => (
+      <div key={i} className='flex-1 lg:w-1/2 space-y-atomic'><RichText render={paragraph} htmlSerializer={htmlSerializer} /></div>
+    )) || children}
   </div>
 )

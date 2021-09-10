@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
-import { molecularSpacing } from 'src/constants/spacing'
 import { dateFormatter } from 'utils/dateFormatter'
 
 type TagListType = {
@@ -35,7 +34,7 @@ export const Sidebar = ({ className, notes }: SidebarType) => {
         </Link>
       </div>
 
-      <div className={molecularSpacing}>
+      <div className='space-y-molecular'>
         {tags.map((tag, i) => {
           return (
             <TagList 
