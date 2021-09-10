@@ -35,7 +35,7 @@ export const Sidebar = ({ className, notes }: SidebarType) => {
         </Link>
       </div>
 
-      <div className='space-y-molecular'>
+      <div className='hidden md:block space-y-molecular'>
         {tags.map((tag, i) => {
           return (
             <TagList 
