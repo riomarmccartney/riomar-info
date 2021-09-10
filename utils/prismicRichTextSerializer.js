@@ -1,6 +1,7 @@
-import { createElement } from 'react'
+import { createElement, useState } from 'react'
 import { Elements } from 'prismic-richtext'
 import { nextLinkResolver } from './prismicHelpers'
+import clsx from 'clsx'
 import Image from 'next/image'
 
 const propsWithUniqueKey = function (props, key) {
@@ -10,6 +11,7 @@ const propsWithUniqueKey = function (props, key) {
 let targetAttr, relAttr
 
 export const htmlSerializer = (type, element, content, children, key) => {
+  const [visiblity, setVisibility] = useState(false)
   var props = {}
 
   switch (type) {
@@ -24,7 +26,9 @@ export const htmlSerializer = (type, element, content, children, key) => {
       src: element.url, 
       alt: element.alt, 
       height: element.dimensions.height, 
-      width: element.dimensions.width 
+      width: element.dimensions.width,
+      className: clsx(visiblity ? 'opacity-100' : 'opacity-0', 'transition-opacity duration-500 delay-300'),
+      onLoad: () => setVisibility(true)
     }
     
     return createElement(Image, propsWithUniqueKey(props, key))
