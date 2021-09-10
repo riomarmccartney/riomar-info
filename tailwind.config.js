@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   purge: [
     './src/**/*.{js,ts,jsx,tsx}', 
@@ -20,5 +22,12 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/aspect-ratio')],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'), 
+    plugin(function({ addBase, theme }) {
+      addBase({
+        'html': { fontSize: '14px' },
+      })
+    })
+  ],
 }
