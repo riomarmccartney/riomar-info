@@ -1,8 +1,9 @@
-import { createElement, useState } from 'react'
+import { createElement } from 'react'
 import { Elements } from 'prismic-richtext'
 import { nextLinkResolver } from './prismicHelpers'
-import clsx from 'clsx'
-import Image from 'next/image'
+import { NextImage } from 'src/components/UI/NextImage'
+import { NextLink } from 'src/components/UI/NextLink'
+
 
 const propsWithUniqueKey = function (props, key) {
   return Object.assign(props || {}, { key })
@@ -11,7 +12,6 @@ const propsWithUniqueKey = function (props, key) {
 let targetAttr, relAttr
 
 export const htmlSerializer = (type, element, content, children, key) => {
-  const [visiblity, setVisibility] = useState(false)
   var props = {}
 
   switch (type) {
@@ -27,11 +27,9 @@ export const htmlSerializer = (type, element, content, children, key) => {
       alt: element.alt, 
       height: element.dimensions.height, 
       width: element.dimensions.width,
-      className: clsx(visiblity ? 'opacity-100' : 'opacity-0', 'transition-opacity duration-500 delay-300'),
-      onLoad: () => setVisibility(true)
     }
     
-    return createElement(Image, propsWithUniqueKey(props, key))
+    return <NextImage {...propsWithUniqueKey(props, key)} />
 
     // Add a class to hyperlinks
   case Elements.hyperlink:
@@ -47,7 +45,7 @@ export const htmlSerializer = (type, element, content, children, key) => {
       targetAttr,
       relAttr,
     )
-    return createElement('a', propsWithUniqueKey(props, key), children)
+    return <NextLink {...propsWithUniqueKey(props, key)}>{children}</NextLink>
 
     // Return null to stick with the default behavior
   default:
