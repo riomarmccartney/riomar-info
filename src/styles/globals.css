@@ -5,10 +5,10 @@
 @layer utilities {
   @variants responsive {
     .space-y-universal {
-      @apply space-y-36;
+      @apply space-y-24 md:space-y-36;
     }
     .space-y-elemental {
-      @apply space-y-16;
+      @apply space-y-12 md:space-y-16;
     }
     .space-y-molecular {
       @apply space-y-8;
@@ -20,10 +20,10 @@
       @apply space-y-2;
     }
     .space-x-universal {
-      @apply space-x-36;
+      @apply space-x-24 md:space-x-36;
     }
     .space-x-elemental {
-      @apply space-x-16;
+      @apply space-x-12 md:space-x-16;
     }
     .space-x-molecular {
       @apply space-x-8;
@@ -32,21 +32,6 @@
       @apply space-x-6;
     }
     .space-x-subatomic {
-      @apply space-x-2;
-    }
-    .space-universal {
-      @apply space-x-36;
-    }
-    .space-elemental {
-      @apply space-x-16;
-    }
-    .space-molecular {
-      @apply space-x-8;
-    }
-    .space-atomic {
-      @apply space-x-6;
-    }
-    .space-subatomic {
       @apply space-x-2;
     }
   }
