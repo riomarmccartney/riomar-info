@@ -13,8 +13,8 @@ import { Intro } from 'src/components/Intro'
 export default function Index({ notes, intro }: { notes: any, intro: any }) {
   return (
     <Layout>
-      <Sidebar notes={notes} className='hidden w-1/6 max-w-sm py-8 pl-8 pr-16 space-y-universal lg:block min-w-min whitespace-nowrap'/>
-      <main className='flex-1 w-full px-16 py-6 overflow-y-scroll'>
+      <Sidebar notes={notes} className='py-8 pl-8 pr-8 md:max-w-sm md:w-1/6 md:pr-16 space-y-universal md:min-w-min '/>
+      <main className='flex-1 w-full px-8 py-6 md:overflow-y-scroll md:px-16'>
         <div className='max-w-xl space-y-universal lg:max-w-7xl '>
           <Intro content={intro} />
           
