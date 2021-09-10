@@ -28,7 +28,7 @@ export const Sidebar = ({ className, notes }: SidebarType) => {
     <div className={className}>
       <div className="-my-1">
         <Link href='/' passHref>
-          <a className="table-cell w-8 h-8 -mt-2 text-sm leading-none text-center align-middle transition-all duration-150 bg-transparent border border-black rounded-full boder-solid hover:text-white hover:bg-black">
+          <a className="table-cell w-10 h-10 leading-none text-center align-middle transition-all duration-150 bg-transparent border border-black rounded-full boder-solid hover:text-white hover:bg-black">
             RM
           </a>
         </Link>
