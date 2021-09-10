@@ -16,7 +16,7 @@
     .space-y-atomic {
       @apply space-y-6;
     }
-    .space-y-atomic {
+    .space-y-subatomic {
       @apply space-y-2;
     }
     .space-x-universal {
@@ -31,7 +31,7 @@
     .space-x-atomic {
       @apply space-x-6;
     }
-    .space-x-atomic {
+    .space-x-subatomic {
       @apply space-x-2;
     }
     .space-universal {
@@ -46,7 +46,7 @@
     .space-atomic {
       @apply space-x-6;
     }
-    .space-atomic {
+    .space-subatomic {
       @apply space-x-2;
     }
   }

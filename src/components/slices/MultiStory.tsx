@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { RichText } from 'prismic-reactjs'
 import { ReactNode } from 'react'
 import { htmlSerializer } from 'utils/prismicRichTextSerializer'

@@ -13,7 +13,7 @@ export const Note = ({title, article, caption, date, uid}: NoteType) => {
         {article}
       </div>
       <HorizontalDivider />
-      <div className='w-1/2 pr-4 text-sm text-gray-400 space-y-atomic'>{caption}</div>
+      <div className='w-1/2 pr-4 text-sm text-gray-400 space-y-subatomic'>{caption}</div>
     </article>
   )
 }
