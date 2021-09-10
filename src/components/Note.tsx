@@ -1,21 +1,19 @@
-import clsx from 'clsx'
-import { molecularSpacing, atomicSpacing, subAtomicSpacing } from 'src/constants/spacing'
 import { NoteType } from 'src/types/note'
 import { dateFormatter } from 'utils/dateFormatter'
 import { HorizontalDivider } from './UI/HorizontalDivider'
 
 export const Note = ({title, article, caption, date, uid}: NoteType) => {
   return (
-    <article id={uid} className={(molecularSpacing)}>
+    <article id={uid} className='space-y-molecular'>
       <div>
         {date && <span>{dateFormatter(date)}</span>}
         <h2>{title}</h2>
       </div>
-      <div className={atomicSpacing}>
+      <div className='space-y-atomic'>
         {article}
       </div>
       <HorizontalDivider />
-      <div className={clsx(subAtomicSpacing,'w-1/2 pr-4 text-sm text-gray-400')}>{caption}</div>
+      <div className='w-1/2 pr-4 text-sm text-gray-400 space-y-atomic'>{caption}</div>
     </article>
   )
 }

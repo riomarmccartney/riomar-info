@@ -8,16 +8,14 @@ import { RichText } from 'prismic-reactjs'
 import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 import { Layout } from 'src/components/Layout'
 import { Sidebar } from 'src/components/Sidebar'
-import { universeSpacing } from 'src/constants/spacing'
-import clsx from 'clsx'
 import { Intro } from 'src/components/Intro'
 
 export default function Index({ notes, intro }: { notes: any, intro: any }) {
   return (
     <Layout>
-      <Sidebar notes={notes} className={clsx('w-1/5 py-8 pl-8 pr-24 min-w-min whitespace-nowrap max-w-sm', universeSpacing)}/>
-      <main className='flex-1 w-full px-16 py-8 overflow-y-scroll'>
-        <div className={clsx(universeSpacing, 'max-w-6xl')}>
+      <Sidebar notes={notes} className='hidden w-1/6 max-w-sm py-8 pl-8 pr-16 space-y-universal lg:block min-w-min whitespace-nowrap'/>
+      <main className='flex-1 w-full px-16 py-6 overflow-y-scroll'>
+        <div className='max-w-xl space-y-universal lg:max-w-7xl '>
           <Intro content={intro} />
           
           {notes.map((note: any) => {
