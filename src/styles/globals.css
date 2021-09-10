@@ -8,7 +8,7 @@
       @apply space-y-24 md:space-y-36;
     }
     .space-y-elemental {
-      @apply space-y-12 md:space-y-16;
+      @apply space-y-16;
     }
     .space-y-molecular {
       @apply space-y-8;
@@ -23,7 +23,7 @@
       @apply space-x-24 md:space-x-36;
     }
     .space-x-elemental {
-      @apply space-x-12 md:space-x-16;
+      @apply space-x-16;
     }
     .space-x-molecular {
       @apply space-x-8;
