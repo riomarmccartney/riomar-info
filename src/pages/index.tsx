@@ -13,9 +13,9 @@ import { Intro } from 'src/components/Intro'
 export default function Index({ notes, intro }: { notes: any, intro: any }) {
   return (
     <Layout>
-      <Sidebar notes={notes} className='py-8 pl-8 pr-8 md:max-w-sm md:w-1/6 md:pr-16 space-y-universal md:min-w-min '/>
-      <main className='flex-1 w-full px-8 py-6 md:overflow-y-scroll md:px-16'>
-        <div className='max-w-xl space-y-universal lg:max-w-7xl '>
+      <Sidebar notes={notes} className='w-full max-w-2xl pt-8 pl-8 pr-8 mx-auto md:mx-0 md:py-8 md:max-w-sm md:w-1/6 md:pr-16 space-y-universal md:min-w-min'/>
+      <main className='flex-1 w-full max-w-2xl px-8 py-6 mx-auto md:max-w-none md:overflow-y-scroll md:px-16'>
+        <div className='max-w-2xl space-y-universal lg:max-w-7xl '>
           <Intro content={intro} />
           
           {notes.map((note: any) => {
