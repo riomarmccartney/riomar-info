@@ -7,7 +7,7 @@ type LayoutType = {
 
 export const Layout = ({ children }: LayoutType) => {
   return (
-    <div className='flex flex-row h-screen text-base bg-gray-100 divide-x divide-black font-regular font-typeface tracking-base'>
+    <div className='flex flex-col h-screen text-base bg-gray-100 md:flex-row font-regular font-typeface tracking-base'>
       {children}
     </div>
   )

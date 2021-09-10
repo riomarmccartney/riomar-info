@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import clsx from 'clsx'
 import { RichText } from 'prismic-reactjs'
 import { dateFormatter } from 'utils/dateFormatter'
 
@@ -25,7 +26,7 @@ export const Sidebar = ({ className, notes }: SidebarType) => {
   const tags = ['Notes', 'Work']
 
   return (
-    <div className={className}>
+    <div className={clsx(className, 'whitespace-nowrap md:border-r border-solid border-black')}>
       <div className="-my-1">
         <Link href='/' passHref>
           <a className="table-cell w-10 h-10 leading-none text-center align-middle transition-all duration-150 bg-transparent border border-black rounded-full boder-solid hover:text-white hover:bg-black">
