@@ -24,7 +24,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'), 
-    plugin(function({ addBase, theme }) {
+    plugin(function({ addBase }) {
       addBase({
         'html': { fontSize: '14px' },
       })
