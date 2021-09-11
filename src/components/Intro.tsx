@@ -18,7 +18,7 @@ export const Intro = ({ content }: {content: any}) => (
               return (
                 <li key={RichText.asText(link)}>
                   <span className="inline-block"><RichText render={link} htmlSerializer={htmlSerializer} /></span>
-                  <sup className="ml-0.5">↗</sup>
+                  <sup className="ml-0.5 ">↗</sup>
                 </li>
               )
             })}

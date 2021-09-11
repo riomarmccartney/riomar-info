@@ -26,8 +26,8 @@ export const Sidebar = ({ className, notes }: SidebarType) => {
   const tags = ['Notes', 'Work']
 
   return (
-    <div className={clsx(className, 'whitespace-nowrap md:border-r border-solid border-black')}>
-      <div className="-my-1">
+    <div className={clsx(className, 'whitespace-nowrap')}>
+      <div className="md:py-1">
         <Link href='/' passHref>
           <a className="table-cell w-10 h-10 leading-none text-center align-middle transition-all duration-150 bg-transparent border border-black rounded-full boder-solid hover:text-white hover:bg-black">
             RM
