@@ -7,32 +7,27 @@ import { Note } from 'src/components/Note'
 import { RichText } from 'prismic-reactjs'
 import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 import { Layout } from 'src/components/Layout'
-import { Sidebar } from 'src/components/Sidebar'
 import { Intro } from 'src/components/Intro'
 
 export default function Index({ notes, intro }: { notes: any, intro: any }) {
   return (
-    <Layout>
-      <Sidebar notes={notes} className='w-full max-w-2xl pt-8 pl-8 pr-8 mx-auto md:mx-0 md:py-8 md:max-w-sm md:w-1/6 md:pr-16 space-y-universal md:min-w-min'/>
-      <main className='flex-1 w-full max-w-2xl px-8 py-6 mx-auto md:max-w-none md:overflow-y-scroll md:px-16'>
-        <div className='max-w-2xl space-y-universal lg:max-w-7xl '>
-          <Intro content={intro} />
+    <Layout notes={notes}>
+ 
+      <Intro content={intro} />
           
-          {notes.map((note: any) => {
-            return (
-              <Note 
-                key={note.uid}
-                uid={note.uid}
-                title={RichText.asText(note.data.title)}
-                date={note.first_publication_date}
-                article={<SliceZone resolver={resolver} slices={note.data.body}/>}
-                caption={<RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
-              />
-            )}
-          )}
-        </div>
-      </main>
-      
+      {notes.map((note: any) => {
+        return (
+          <Note 
+            key={note.uid}
+            uid={note.uid}
+            title={RichText.asText(note.data.title)}
+            date={note.first_publication_date}
+            article={<SliceZone resolver={resolver} slices={note.data.body}/>}
+            caption={<RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
+          />
+        )}
+      )}
+
     </Layout>
   )
 }
