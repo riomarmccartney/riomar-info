@@ -15,8 +15,8 @@ export const Layout = ({ children, notes }: LayoutType) => {
           <Sidebar notes={notes} className='space-y-universal'/>
         </div>
       </nav>
-      <main className='flex-1 w-full px-4 md:overflow-y-scroll md:py-8 md:px-16 lg:pt-8'>
-        <div className="max-w-2xl mx-auto md:mx-0 md:max-w-7xl">
+      <main className='flex-1 w-full px-4 md:overflow-y-scroll md:py-8 md:px-16 lg:pt-8 '>
+        <div className="max-w-2xl pb-12 mx-auto md:mx-0 md:max-w-7xl md:pb-18">
           <div className='space-y-universal'>{children}</div>
         </div>  
       </main>
