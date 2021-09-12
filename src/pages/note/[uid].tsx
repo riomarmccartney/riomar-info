@@ -13,9 +13,14 @@ interface IParams extends ParsedUrlQuery {
     uid: string
 }
 
-export default function NotePage({ note }: any) {
+type NotePageType = {
+  note: any,
+  notes: any,
+}
+
+export default function NotePage({note, notes}: NotePageType) {
   return (
-    <Layout>
+    <Layout notes={notes}>
       <Note 
         key={note.uid}
         uid={note.uid}
@@ -33,9 +38,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { uid } = context.params as IParams
   const note = await Client().getByUID('note', uid, {})
 
+  const { results } = await Client().query(Prismic.Predicates.at('document.type', 'note'), {
+    orderings: '[note.first_publication_date]'
+  })
+
+  const notes = results
+
   return {
     props: { 
       note,
+      notes,
     }
   }
 }
