@@ -2,7 +2,7 @@ import { createElement } from 'react'
 import { Elements } from 'prismic-richtext'
 import { nextLinkResolver } from './prismicHelpers'
 import { NextImage } from 'src/components/UI/NextImage'
-import { NextLink } from 'src/components/UI/NextLink'
+import { Hyperlink } from 'src/components/UI/Hyperlink'
 
 
 const propsWithUniqueKey = function (props, key) {
@@ -45,7 +45,7 @@ export const htmlSerializer = (type, element, content, children, key) => {
       targetAttr,
       relAttr,
     )
-    return <NextLink {...propsWithUniqueKey(props, key)}>{children}</NextLink>
+    return <Hyperlink {...propsWithUniqueKey(props, key)}>{children}</Hyperlink>
 
     // Return null to stick with the default behavior
   default:
