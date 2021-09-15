@@ -41,6 +41,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const intro = await Client().getSingle('introduction', {})
 
   if (!notes || !intro) {
+    console.error('Failed to load required notes from Prismic: ' + (!notes && 'Notes') || (!intro && 'Intro') + ' not found.')
+    
     return {
       notFound: true,
     }
@@ -49,5 +51,4 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: { notes, intro }
   }
- 
 }
