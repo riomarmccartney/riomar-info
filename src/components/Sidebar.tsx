@@ -2,6 +2,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { RichText } from 'prismic-reactjs'
 import { dateFormatter } from 'utils/dateFormatter'
+import { Clock } from './UI/Clock'
 
 type TagListType = {
   title: any,
@@ -26,27 +27,36 @@ export const Sidebar = ({ className, notes }: SidebarType) => {
   const tags = ['Notes', 'Work']
 
   return (
-    <div className={clsx(className, 'whitespace-nowrap')}>
-      <div className="md:py-1">
-        <Link href='/' passHref>
-          <a className="table-cell w-10 h-10 leading-none text-center align-middle transition-all duration-150 bg-transparent border border-black rounded-full boder-solid hover:text-white hover:bg-black">
+    <>
+      <div className={clsx(className, 'whitespace-nowrap space-y-universal')}>
+        <div className="flex flex-row items-center justify-between">
+          <div className="w-1/4 md:my-1 md:w-auto">
+            <Link href='/' passHref>
+              <a className="transition-colors duration-150 bg-transparent md:leading-none md:table-cell md:text-center md:align-middle md:border md:border-black md:rounded-full md:w-10 md:h-10 md:boder-solid hover:text-white hover:bg-black">
             RM
-          </a>
-        </Link>
-      </div>
+              </a>
+            </Link>
+          </div>
+          <div className="md:hidden"><Clock /></div>
+          <div className="w-1/4 text-right md:w-auto">
+            <span className="transition-colors duration-150 bg-transparent md:hidden hover:text-white hover:bg-black">Index</span>
+          </div>
+        </div>
 
-      <div className='hidden md:block space-y-molecular'>
-        {tags.map((tag, i) => {
-          return (
-            <TagList 
-              key={i}
-              title={tag}
-              content={notes}
-            />
-          )
-        })}
+        <div className='hidden md:block space-y-molecular '>
+          {tags.map((tag, i) => {
+            return (
+              <TagList 
+                key={i}
+                title={tag}
+                content={notes}
+              />
+            )
+          })}
+        </div>
       </div>
-    </div>
+      <div className="hidden mt-36 md:block"><Clock /></div>
+    </>
   )
 }
 
