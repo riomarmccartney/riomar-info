@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { RichText } from 'prismic-reactjs'
 import { dateFormatter } from 'utils/dateFormatter'
 import { Clock } from './UI/Clock'
+import { useState } from 'react'
 
 type TagListType = {
   title: any,
@@ -26,26 +27,32 @@ type SidebarType = {
 
 export const Sidebar = ({ className, wrapperClassName, notes }: SidebarType) => {
   const tags = ['Notes', 'Work']
+  const [sidebarListVisibility, setSidebarListVisibility] = useState(false)
 
   return (
-    <nav className={clsx(wrapperClassName, 'text-gray-100 border-black border-solid md:overflow-scroll md:text-current md:relative md:border-r mix-blend-difference md:mix-blend-normal')}>
+    <nav className={clsx(wrapperClassName, (sidebarListVisibility ? 'pb-8 backdrop-filter backdrop-blur-3xl' : 'bg-transparent'), 'mix-blend-difference text-gray-100 border-black border-solid md:overflow-scroll md:text-current md:relative md:border-r md:mix-blend-normal')}>
       <div className={clsx(className)}>
-        <div className='box-border py-2 border-b border-gray-100 border-solid md:py-0 md:border-none whitespace-nowrap space-y-universal md:justify-between md:h-full md:flex md:flex-col '>
-          <div className="flex flex-row items-center justify-between">
+        <div className='box-border whitespace-nowrap space-y-universal md:justify-between md:h-full md:flex md:flex-col'>
+          <div className="flex flex-row items-center justify-between py-2 border-b border-gray-100 border-solid md:py-0 md:border-none">
             <div>
               <Link href='/' passHref>
                 <a className="transition-colors duration-150 bg-transparent md:leading-none md:table-cell md:text-center md:align-middle md:border md:border-black md:rounded-full md:w-10 md:h-10 md:boder-solid hover:text-white hover:bg-black">
-            RM
+                  RM
                 </a>
               </Link>
             </div>
           
             <div>
-              <span className="transition-colors duration-150 bg-transparent md:hidden hover:text-white hover:bg-black">Index</span>
+              <button 
+                className="relative transition-colors duration-150 bg-transparent md:hidden hover:text-white hover:bg-black"
+                onClick={() => setSidebarListVisibility(!sidebarListVisibility)}
+              >
+                <span>{sidebarListVisibility ? 'Close ' : 'Index'}</span>
+              </button>
             </div>
           </div>
 
-          <div className='hidden md:block space-y-molecular '>
+          <div className={clsx(sidebarListVisibility ? 'block ' : 'hidden', 'md:block space-y-molecular')}>
             {tags.map((tag, i) => {
               return (
                 <TagList 
