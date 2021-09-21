@@ -30,13 +30,13 @@ export const Sidebar = ({ className, wrapperClassName, notes }: SidebarType) => 
   const [sidebarListVisibility, setSidebarListVisibility] = useState(false)
 
   return (
-    <nav className={clsx(wrapperClassName, (sidebarListVisibility ? 'pb-8 backdrop-filter backdrop-blur-3xl' : 'bg-transparent'), 'mix-blend-difference text-gray-100 border-black border-solid md:overflow-scroll md:text-current md:relative md:border-r md:mix-blend-normal')}>
+    <nav className={clsx(wrapperClassName, (sidebarListVisibility ? 'bg-gray-100 text-current' : 'mix-blend-difference text-gray-100'), 'border-black md:bg-none border-solid md:overflow-scroll md:text-current md:relative md:border-r md:mix-blend-normal')}>
       <div className={clsx(className)}>
-        <div className='box-border whitespace-nowrap space-y-universal md:justify-between md:h-full md:flex md:flex-col'>
-          <div className="flex flex-row items-center justify-between py-2 border-b border-gray-100 border-solid md:py-0 md:border-none">
+        <div className={clsx((sidebarListVisibility ? 'border-b border-black border-solid pb-8' : 'pb-0'), 'md:border-none md:pb-0 box-border bor whitespace-nowrap space-y-universal md:justify-between md:h-full md:flex md:flex-col')}>
+          <div className={clsx((sidebarListVisibility ? 'border-black' : 'border-gray-100'), 'flex flex-row items-center justify-between py-2 border-b border-solid md:py-0 md:border-none')}>
             <div>
               <Link href='/' passHref>
-                <a className="transition-colors duration-150 bg-transparent md:leading-none md:table-cell md:text-center md:align-middle md:border md:border-black md:rounded-full md:w-10 md:h-10 md:boder-solid hover:text-white hover:bg-black">
+                <a className="bg-transparent md:duration-150 md:transition-colors md:leading-none md:table-cell md:text-center md:align-middle md:border md:border-black md:rounded-full md:w-10 md:h-10 md:boder-solid hover:text-white hover:bg-black">
                   RM
                 </a>
               </Link>
