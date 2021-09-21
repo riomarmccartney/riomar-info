@@ -8,6 +8,7 @@ import { useState } from 'react'
 type TagListType = {
   title: any,
   content: any, 
+  className: any,
 }
     
 type NoteType = {
@@ -36,7 +37,7 @@ export const Sidebar = ({ className, wrapperClassName, notes }: SidebarType) => 
           <div className={clsx((sidebarListVisibility ? 'border-black' : 'border-gray-100'), 'flex flex-row items-center justify-between py-2 border-b border-solid md:py-0 md:border-none')}>
             <div>
               <Link href='/' passHref>
-                <a className="bg-transparent md:duration-150 md:transition-colors md:leading-none md:table-cell md:text-center md:align-middle md:border md:border-black md:rounded-full md:w-10 md:h-10 md:boder-solid hover:text-white hover:bg-black">
+                <a className={clsx((sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'), ' bg-transparent md:duration-150 md:transition-colors md:leading-none md:table-cell md:text-center md:align-middle md:border md:border-black md:rounded-full md:w-10 md:h-10 md:boder-solid md:hover:text-white md:hover:bg-black')}>
                   RM
                 </a>
               </Link>
@@ -44,7 +45,7 @@ export const Sidebar = ({ className, wrapperClassName, notes }: SidebarType) => 
           
             <div>
               <button 
-                className="relative transition-colors duration-150 bg-transparent md:hidden hover:text-white hover:bg-black"
+                className={clsx((sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'),'relative md:transition-colors md:duration-150 bg-transparent md:hidden md:hover:text-white md:hover:bg-black')}
                 onClick={() => setSidebarListVisibility(!sidebarListVisibility)}
               >
                 <span>{sidebarListVisibility ? 'Close ' : 'Index'}</span>
@@ -55,7 +56,8 @@ export const Sidebar = ({ className, wrapperClassName, notes }: SidebarType) => 
           <div className={clsx(sidebarListVisibility ? 'block ' : 'hidden', 'md:block space-y-molecular')}>
             {tags.map((tag, i) => {
               return (
-                <TagList 
+                <TagList
+                  className={clsx((sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'), 'md:hover:text-white md:hover:bg-black')} 
                   key={i}
                   title={tag}
                   content={notes}
@@ -70,7 +72,7 @@ export const Sidebar = ({ className, wrapperClassName, notes }: SidebarType) => 
   )
 }
 
-const TagList = ({title, content}: TagListType) => {
+const TagList = ({title, content, className}: TagListType) => {
   const listItem = 
     content
       .map(({uid, tags, first_publication_date, data}: NoteType) => {
@@ -78,7 +80,7 @@ const TagList = ({title, content}: TagListType) => {
 
         if (tag == title) 
           return (
-            <li key={uid}><Link href={'/note/' + uid}>{tags[0] ? RichText.asText(data.title) : dateFormatter(first_publication_date)}</Link></li>
+            <li key={uid}><Link href={'/note/' + uid} passHref><a className={className}>{tags[0] ? RichText.asText(data.title) : dateFormatter(first_publication_date)}</a></Link></li>
           )
         return 
       })
