@@ -7,7 +7,8 @@ import { MultiStory } from './slices'
 export const Intro = ({ content }: {content: any}) => (
   <>
     <div>
-      <RichText render={content.data.title} htmlSerializer={htmlSerializer} />
+      <p>Riomar McCartney ✹ マッカートニー 龍馬</p>
+      <p>Born 1996 Japan. Raised in France. <span className="block md:inline">Currently based in Tokyo, Japan.</span></p>
     </div>
     <Note 
       article={
