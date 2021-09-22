@@ -1,0 +1,28 @@
+.link {
+  &:hover {
+    @apply opacity-25;
+  }
+}
+.linkin-hero {
+  @apply underline;
+  &:hover {
+    @apply opacity-25;
+  }
+}
+
+.linkin-text {
+  @apply italic;
+  &:hover {
+    @apply opacity-25;
+  }
+}
+
+/////// ALT
+
+$styleAlt: "ss01" on, "ss02" on;
+
+.styleAlt {
+  -moz-font-feature-settings: $styleAlt;
+  -webkit-font-feature-settings: $styleAlt;
+  font-feature-settings: $styleAlt;
+}

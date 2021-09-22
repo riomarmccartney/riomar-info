@@ -1,0 +1,15 @@
+html{
+  @apply font-body tracking-normal antialiased;
+  font-size: 14px;
+}
+
+.wf-loading, .wf-loading {
+  @apply invisible;
+  @apply opacity-0;
+}
+
+.wf-active {
+  @apply transition-opacity;
+  @apply opacity-100;
+  @apply duration-200;
+}
