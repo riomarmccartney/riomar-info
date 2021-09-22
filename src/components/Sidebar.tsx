@@ -31,13 +31,13 @@ export const Sidebar = ({ className, wrapperClassName, notes }: SidebarType) => 
   const [sidebarListVisibility, setSidebarListVisibility] = useState(false)
 
   return (
-    <nav className={clsx(wrapperClassName, (sidebarListVisibility ? 'bg-gray-100 text-current' : 'mix-blend-difference text-gray-100'), 'border-black md:bg-none border-solid md:overflow-scroll md:text-current md:relative md:border-r md:mix-blend-normal')}>
+    <nav className={clsx(wrapperClassName, (sidebarListVisibility ? 'bg-gray-100 text-current h-full' : 'mix-blend-difference text-gray-100'), 'border-black md:bg-none border-solid md:overflow-scroll md:text-current md:relative md:border-r md:mix-blend-normal')}>
       <div className={clsx(className)}>
-        <div className={clsx((sidebarListVisibility ? 'border-b border-black border-solid pb-8' : 'pb-0'), 'md:border-none md:pb-0 box-border bor whitespace-nowrap space-y-universal md:justify-between md:h-full md:flex md:flex-col')}>
-          <div className={clsx((sidebarListVisibility ? 'border-black' : 'border-gray-100'), 'flex flex-row items-center justify-between py-2 border-b border-solid md:py-0 md:border-none')}>
-            <div>
+        <div className='flex flex-col content-between h-full whitespace-nowrap space-y-universal'>
+          <div className={clsx((sidebarListVisibility ? 'border-black' : 'border-gray-100'), 'flex flex-row items-center justify-between pb-2 border-b border-solid md:py-0 md:border-none ')}>
+            <div className="md:py-1">
               <Link href='/' passHref>
-                <a className={clsx((sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'), ' bg-transparent md:duration-150 md:transition-colors md:leading-none md:table-cell md:text-center md:align-middle md:border md:border-black md:rounded-full md:w-10 md:h-10 md:boder-solid md:hover:text-white md:hover:bg-black')}>
+                <a className={clsx((sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'), ' bg-transparent md:duration-150 md:transition-colors md:leading-none md:table-cell md:text-center md:align-middle md:border md:border-black md:rounded-full md:w-10 md:h-10  md:boder-solid md:hover:text-white md:hover:bg-black')}>
                   RM
                 </a>
               </Link>
@@ -53,7 +53,7 @@ export const Sidebar = ({ className, wrapperClassName, notes }: SidebarType) => 
             </div>
           </div>
 
-          <div className={clsx(sidebarListVisibility ? 'block ' : 'hidden', 'md:block space-y-molecular')}>
+          <div className={clsx(sidebarListVisibility ? 'block ' : 'hidden', 'md:block space-y-molecular flex-1')}>
             {tags.map((tag, i) => {
               return (
                 <TagList
@@ -65,8 +65,8 @@ export const Sidebar = ({ className, wrapperClassName, notes }: SidebarType) => 
               )
             })}
           </div>
+          <div className={clsx(sidebarListVisibility ? 'block ' : 'hidden', 'mt-36 md:block')}><Clock /></div>
         </div>
-        <div className="hidden mt-36 md:block"><Clock /></div>
       </div>
     </nav>
   )
@@ -90,7 +90,7 @@ const TagList = ({title, content, className}: TagListType) => {
   if (listItem[0]) {
     return (
       <figure>
-        <figcaption><sup>{title}</sup></figcaption>
+        <figcaption className="h-0 transform -translate-y-6"><sup>{title}</sup></figcaption>
         
         <ul>
           {listItem}
