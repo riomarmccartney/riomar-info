@@ -56,7 +56,7 @@ typings/
 .env.local
 
 # next files
-public/
+
 .next
 
 # Mac files
