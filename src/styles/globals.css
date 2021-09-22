@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+    .space-y-universal {
+      @apply space-y-24 md:space-y-36;
+    }
+    .space-y-elemental {
+      @apply space-y-16;
+    }
+    .space-y-molecular {
+      @apply space-y-8;
+    }
+    .space-y-atomic {
+      @apply space-y-6;
+    }
+    .space-y-subatomic {
+      @apply space-y-2;
+    }
+    .space-x-universal {
+      @apply space-x-24 md:space-x-36;
+    }
+    .space-x-elemental {
+      @apply space-x-16;
+    }
+    .space-x-molecular {
+      @apply space-x-8;
+    }
+    .space-x-atomic {
+      @apply space-x-6;
+    }
+    .space-x-subatomic {
+      @apply space-x-2;
+    }
+  }
+}
