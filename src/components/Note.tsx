@@ -1,20 +1,19 @@
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-import timezone from 'dayjs/plugin/timezone'
 import { NoteType } from 'src/types/note'
-
-dayjs.extend(utc)
-dayjs.extend(timezone)
+import { dateFormatter } from 'utils/dateFormatter'
+import { HorizontalDivider } from './UI/HorizontalDivider'
 
 export const Note = ({title, article, caption, date, uid}: NoteType) => {
-  const dateLocalized = dayjs(date).tz('Asia/Tokyo').format('YYYY.MM.DD HH:mm')
-
   return (
-    <article>
-      <h2>{title}</h2>
-      <span>{dateLocalized}</span>
-      <div>{article}</div>
-      <div>{caption}</div>
+    <article id={uid} className='space-y-molecular'>
+      <div>
+        {date && <span>{dateFormatter(date)}</span>}
+        <h2>{title}</h2>
+      </div>
+      <div className='space-y-atomic'>
+        {article}
+      </div>
+      <HorizontalDivider />
+      <div className='text-sm text-gray-400 lg:pr-4 lg:w-1/2 space-y-subatomic'>{caption}</div>
     </article>
   )
 }
