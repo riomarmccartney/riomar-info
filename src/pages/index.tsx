@@ -8,11 +8,12 @@ import { RichText } from 'prismic-reactjs'
 import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 import { Layout } from 'src/components/Layout'
 import { Intro } from 'src/components/Intro'
+import { Seo } from 'src/components/Seo'
 
 export default function Index({ notes, intro }: { notes: any, intro: any }) {
   return (
     <Layout notes={notes}>
- 
+      <Seo/>
       <Intro content={intro} />
           
       {notes.map((note: any) => {
