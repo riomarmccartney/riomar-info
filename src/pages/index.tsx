@@ -23,7 +23,7 @@ export default function Index({ notes, intro }: { notes: any, intro: any }) {
             title={RichText.asText(note.data.title)}
             date={note.first_publication_date}
             article={<SliceZone resolver={resolver} slices={note.data.body}/>}
-            caption={<RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
+            caption={RichText.asText(note.data.caption) && <RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
           />
         )}
       )}
