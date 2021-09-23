@@ -31,7 +31,7 @@ export const Sidebar = ({ className, wrapperClassName, notes }: SidebarType) => 
   const [sidebarListVisibility, setSidebarListVisibility] = useState(false)
 
   return (
-    <nav className={clsx(wrapperClassName, (sidebarListVisibility ? 'bg-gray-100 text-current h-full' : 'mix-blend-difference text-gray-100'), 'border-black md:bg-none border-solid md:overflow-scroll md:text-current md:relative md:border-r md:mix-blend-normal')}>
+    <nav className={clsx(wrapperClassName, (sidebarListVisibility ? 'bg-gray-100 text-current h-full' : 'mix-blend-difference text-gray-100'), 'border-black md:bg-none border-solid md:overflow-scroll md:text-current md:border-r md:mix-blend-normal')}>
       <div className={clsx(className)}>
         <div className='flex flex-col content-between h-full whitespace-nowrap space-y-universal'>
           <div className={clsx((sidebarListVisibility ? 'border-black' : 'border-gray-100'), 'flex flex-row items-center justify-between pb-2 border-b border-solid md:py-0 md:border-none ')}>
