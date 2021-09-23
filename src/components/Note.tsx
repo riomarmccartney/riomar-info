@@ -12,7 +12,7 @@ export const Note = ({title, article, caption, date, uid}: NoteType) => {
       <div className='space-y-atomic'>
         {article}
       </div>
-      <HorizontalDivider />
+      {caption && <HorizontalDivider />}
       <div className='text-sm text-gray-400 lg:pr-4 lg:w-1/2 space-y-subatomic'>{caption}</div>
     </article>
   )
