@@ -24,11 +24,11 @@ export const Intro = ({ content }: {content: any}) => (
           <MultiStory>
             <div className='lg:w-1/2 space-y-molecular'>
               <div className='whitespace-pre-wrap space-y-atomic'><RichText render={content.data.intro} htmlSerializer={htmlSerializer} /></div>
-              <ul className="flex flex-row space-x-6">{content.data.links.map(({ link }: { link: any}) => {
+              <ul className="flex flex-row space-x-4 md:space-x-6">{content.data.links.map(({ link }: { link: any}) => {
                 return (
-                  <li key={RichText.asText(link)}>
+                  <li key={RichText.asText(link)} className="whitespace-nowrap">
                     <span className="inline-block"><RichText render={link} htmlSerializer={htmlSerializer} /></span>
-                    <sup className="ml-0.5">↗︎</sup>
+                    <sup className="transform ml-0.5">↗︎</sup>
                   </li>
                 )
               })}
