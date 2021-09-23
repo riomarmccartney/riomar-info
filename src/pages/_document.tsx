@@ -12,7 +12,7 @@ class MyDocument extends Document {
 
   render():ReactElement {
     return (
-      <Html className="bg-gray-100">
+      <Html className="bg-gray-100" lang="en">
         <Head>
           <link
             href='https://fonts.googleapis.com/css2?family=Inter&display=swap'
