@@ -8,6 +8,8 @@ import { RichText } from 'prismic-reactjs'
 import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 import { Layout } from 'src/components/Layout'
 import { ParsedUrlQuery } from 'querystring'
+import { Seo } from 'src/components/Seo'
+import { dateFormatter } from 'utils/dateFormatter'
 
 interface IParams extends ParsedUrlQuery {
     uid: string
@@ -21,13 +23,17 @@ type NotePageType = {
 export default function NotePage({note, notes}: NotePageType) {
   return (
     <Layout notes={notes}>
+      <Seo 
+        title={`${dateFormatter(note.first_publication_date)} ✶ ${RichText.asText(note.data.title)}`}
+      />
+
       <Note 
         key={note.uid}
         uid={note.uid}
         title={RichText.asText(note.data.title)}
         date={note.first_publication_date}
         article={<SliceZone resolver={resolver} slices={note.data.body}/>}
-        caption={<RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
+        caption={RichText.asText(note.data.caption) && <RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
       />
     </Layout>
   )
