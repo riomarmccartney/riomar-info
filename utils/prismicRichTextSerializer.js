@@ -17,7 +17,7 @@ export const htmlSerializer = (type, element, content, children, key) => {
   switch (type) {
   // Add a class to paragraph elements
   case Elements.paragraph:
-    props = { className: 'break-words' }
+    props = { className: 'whitespace-pre-wrap' }
     return createElement('p', propsWithUniqueKey(props, key), children)
 
     // Don't wrap images in a <p> tag
