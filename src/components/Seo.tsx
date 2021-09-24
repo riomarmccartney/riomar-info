@@ -11,7 +11,7 @@ const name = 'Riomar McCartney'
 export const Seo = ({ title, description, imageUrl }: SeoTypes) => {
   const seo = {
     title: title ? `${title} — Riomar McCartney` : name,
-    description: description || 'マッカートニー 龍馬 ✹ Designer & Visual Artist. Co-founder of upcoming.studio. Currently based in Tokyo, Japan.',
+    description: description || 'Designer & Visual Artist. Co-founder of upcoming.studio. Currently based in Tokyo, Japan.',
     image: imageUrl || 'https://riomar.info/ogp.png',
   }
 
