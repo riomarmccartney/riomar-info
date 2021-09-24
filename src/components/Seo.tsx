@@ -36,7 +36,7 @@ export const Seo = ({ title, description, imageUrl }: SeoTypes) => {
       </Head>
 
       <Head key="twitter">
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@riomarmccartney" />
         <meta name="twitter:creator" content="@riomarmccartney" />
       </Head>
