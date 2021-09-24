@@ -4,7 +4,6 @@ import { ReactNode } from 'react'
 type HyperlinkType = {
   children: ReactNode,
   href?: string,
-
 }
 
 export const Hyperlink = ({ children, href, ...rest }: HyperlinkType) => {
@@ -18,9 +17,13 @@ export const Hyperlink = ({ children, href, ...rest }: HyperlinkType) => {
     return (
       <Link 
         href={href}
-        {...rest}
+        passHref
+
       >
-        <a {...className}>{children}</a>
+        <a 
+          {...rest}
+          {...className}
+        >{children}</a>
       </Link>
     )
   }

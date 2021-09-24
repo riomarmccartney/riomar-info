@@ -9,8 +9,6 @@ const propsWithUniqueKey = function (props, key) {
   return Object.assign(props || {}, { key })
 }
 
-let targetAttr, relAttr
-
 export const htmlSerializer = (type, element, content, children, key) => {
   var props = {}
 
@@ -31,20 +29,14 @@ export const htmlSerializer = (type, element, content, children, key) => {
     
     return <NextImage {...propsWithUniqueKey(props, key)} />
 
-    // Add a class to hyperlinks
   case Elements.hyperlink:
-    targetAttr = element.data.target
-      ? { target: element.data.target }
-      : {}
-    relAttr = element.data.target ? { rel: 'noopener' } : {}
-    props = Object.assign(
-      {
-        className: 'transition-all duration-150 bg-transparent border-b border-gray-400 border-solid hover:bg-black hover:text-white hover:border-black',
-        href: element.data.url || nextLinkResolver(element.data),
-      },
-      targetAttr,
-      relAttr,
-    )
+    props = {
+      className: 'transition-all duration-150 bg-transparent border-b border-gray-400 border-solid hover:bg-black hover:text-white hover:border-black',
+      href: element.data.url || nextLinkResolver(element.data),
+      target: element.data.target || '',
+      rel:element.data.target ? 'noopener' : ''
+    }
+
     return <Hyperlink {...propsWithUniqueKey(props, key)}>{children}</Hyperlink>
 
     // Return null to stick with the default behavior
