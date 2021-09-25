@@ -4,10 +4,14 @@ import Image, { ImageProps } from 'next/image'
 import clsx from 'clsx'
 import { useState } from 'react'
 
-export const NextImage = ({ src, ...rest }: ImageProps) => {
-  const [visiblity, setVisibility] = useState(false)
+interface MyProps extends ImageProps {
+  src: any,
+}
 
+export const NextImage = ({ src, ...rest }: MyProps) => {
+  const [visiblity, setVisibility] = useState(false)
   const imageSrcId = src?.match(/riomar-info\/(.*?)\?/)
+
   const myLoader = ({ src, width, quality }: any) => {
     return `https://images.prismic.io/riomar-info/${src}?w=${width}&q=${quality || 75}&fm=auto`
   }
