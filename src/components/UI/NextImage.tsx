@@ -17,13 +17,15 @@ export const NextImage = ({ src, ...rest }: MyProps) => {
   }
 
   return (
-    <Image 
-      className={clsx(visiblity ? 'opacity-100' : 'opacity-0', 'transition-opacity duration-500 delay-300')}
-      loader={myLoader}
-      src={imageSrcId[1]}
-      layout="responsive"
-      onLoad={() => setVisibility(true)} 
-      {...rest}
-    />
+    <div className="bg-gray-200">
+      <Image 
+        className={clsx(visiblity ? 'opacity-100' : 'opacity-0', 'transition-opacity duration-500 delay-300')}
+        loader={myLoader}
+        src={imageSrcId[1]}
+        layout="responsive"
+        onLoad={() => setVisibility(true)} 
+        {...rest}
+      />
+    </div>
   )
 }
