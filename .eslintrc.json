@@ -1,7 +1,12 @@
 {
   "extends": [ "next/core-web-vitals", "eslint:recommended" ],
   "rules" : {
-    "no-console": "warn",
+    "no-console": [
+        "error", 
+        { "allow": 
+          ["warn", "error"] 
+        }
+      ],
      "quotes": [
         "error",
         "single"
