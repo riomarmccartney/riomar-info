@@ -12,8 +12,8 @@ export const NextImage = ({ src, ...rest }: MyProps) => {
   const [visiblity, setVisibility] = useState(false)
   const imageSrcId = src?.match(/riomar-info\/(.*?)\?/)
 
-  const myLoader = ({ src, width, quality, format }: any) => {
-    return `https://images.prismic.io/riomar-info/${src}?w=${width}&q=${quality || 75}&fm=${format || 'auto'}`
+  const myLoader = ({ src, width, quality }: any) => {
+    return `https://images.prismic.io/riomar-info/${src}?w=${width}&q=${quality || 75}&auto=format&lossless=true`
   }
 
   return (
