@@ -18,6 +18,8 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Inter&display=swap'
             rel='preload'
             as='font'
+            type='font/woff2'
+            crossOrigin='true'
           />
 
           <link 
