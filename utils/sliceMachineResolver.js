@@ -19,7 +19,7 @@ const NotFound = ({ sliceName, slice, i }) => {
         background: '#FAFAFA',
       }}
     >
-      <h2>Slice '{sliceName}' not found.</h2>
+      <h2>Slice {sliceName} not found.</h2>
       <p style={{ maxWidth: '320px', fontSize: '16px' }}>
         Check that you registered this component in your slices library!
       </p>
