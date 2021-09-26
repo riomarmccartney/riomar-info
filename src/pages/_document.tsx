@@ -16,7 +16,8 @@ class MyDocument extends Document {
         <Head>
           <link
             href='https://fonts.googleapis.com/css2?family=Inter&display=swap'
-            rel='stylesheet'
+            rel='preload'
+            as='font'
           />
 
           <link 
