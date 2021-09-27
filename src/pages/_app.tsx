@@ -6,7 +6,7 @@ import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
 type NextPageWithLayout = NextPage & {
-  withLayout?: (page: ReactElement) => ReactNode
+  withLayout?: (page: ReactElement, notes: any) => ReactNode
 }
 
 type AppPropsWithLayout = AppProps & {
