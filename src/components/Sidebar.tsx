@@ -59,7 +59,7 @@ export const Sidebar = ({ onMenuToggle, sidebarListVisibility, notes }: SidebarT
      
         </div>
         
-        <div className={clsx(sidebarListVisibility ? 'block md:translate-x-0' : 'hidden md:-translate-x-56', ' md:duration-300 md:block md:transform-gpu space-y-molecular flex-1 min-w-min')}>
+        <div onClick={() => onMenuToggle()} className={clsx(sidebarListVisibility ? 'block md:translate-x-0' : 'hidden md:-translate-x-56', ' md:duration-300 md:block md:transform-gpu space-y-molecular flex-1 min-w-min')}>
           {tags.map((tag, i) => {
             return (
               <TagList
