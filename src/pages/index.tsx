@@ -9,10 +9,11 @@ import { htmlSerializer } from 'utils/prismicRichTextSerializer'
 import { Layout } from 'src/components/Layout'
 import { Intro } from 'src/components/Intro'
 import { Seo } from 'src/components/Seo'
+import { ReactNode } from 'react'
 
 export default function Index({ notes, intro }: { notes: any, intro: any }) {
   return (
-    <Layout notes={notes}>
+    <>
       <Seo/>
       <Intro content={intro} />
           
@@ -28,17 +29,20 @@ export default function Index({ notes, intro }: { notes: any, intro: any }) {
           />
         )}
       )}
-
-    </Layout>
+    </>
   )
+}
+
+Index.withLayout = function withLayout(page: ReactNode, notes: any) {
+  return <Layout notes={notes}>{page}</Layout>
 }
 
 export const getStaticProps: GetStaticProps = async () => { 
   const { results } = await Client().query(Prismic.Predicates.at('document.type', 'note'), {
     orderings: '[note.first_publication_date]'
   })
-  const notes = results
 
+  const notes = results
   const intro = await Client().getSingle('introduction', {})
 
   if (!notes || !intro) {

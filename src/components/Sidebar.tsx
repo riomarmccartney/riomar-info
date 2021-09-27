@@ -2,8 +2,6 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { RichText } from 'prismic-reactjs'
 import { dateFormatter } from 'utils/dateFormatter'
-import { Clock } from './UI/Clock'
-import { useState } from 'react'
 
 type TagListType = {
   title: any,
@@ -21,52 +19,60 @@ type NoteType = {
 }
 
 type SidebarType = {
-  className?: string,
-  wrapperClassName?: string,
   notes: any,
+  onMenuToggle: any,
+  sidebarListVisibility: boolean,
 }
 
-export const Sidebar = ({ className, wrapperClassName, notes }: SidebarType) => {
+export const Sidebar = ({ onMenuToggle, sidebarListVisibility, notes }: SidebarType) => {
   const tags = ['Notes', 'Work']
-  const [sidebarListVisibility, setSidebarListVisibility] = useState(false)
+
+  const MenuButton = ({ className }: {className?: string}) => {
+    return (
+      <div className={className}>
+        <div onClick={() => onMenuToggle()}>{sidebarListVisibility ? 'Close' : 'Index'}</div>
+      </div>
+    )
+  }
 
   return (
-    <nav className={clsx(wrapperClassName, (sidebarListVisibility ? 'bg-gray-100 text-current h-full' : 'mix-blend-difference text-gray-100'), 'border-black md:bg-none border-solid md:overflow-scroll md:text-current md:border-r md:mix-blend-normal')}>
-      <div className={clsx(className)}>
-        <div className='flex flex-col content-between h-full whitespace-nowrap space-y-universal'>
-          <div className={clsx((sidebarListVisibility ? 'border-black' : 'border-gray-100'), 'flex flex-row items-center justify-between pb-2 border-b border-solid md:py-0 md:border-none ')}>
-            <div className="md:py-1">
-              <Link href='/' passHref>
-                <a className={clsx((sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'), ' bg-transparent md:duration-150 md:transition-colors md:leading-none md:table-cell md:text-center md:align-middle md:border md:border-black md:rounded-full md:w-10 md:h-10  md:boder-solid md:hover:text-white md:hover:bg-black')}>
+    <nav className={clsx((sidebarListVisibility ? 'bg-gray-100 text-current h-full' : 'mix-blend-difference text-gray-100 '), 'fixed z-50 w-full px-4 py-4 border-black border-solid md:relative md:py-8 md:pl-8 md:pr-0 md:bg-none md:text-current md:border-none md:mix-blend-normal md:w-auto')}>
+      <div className='relative flex flex-col justify-between max-w-2xl mx-auto whitespace-nowrap space-y-universal md:h-full md:mx-0 md:max-w-none md:w-10'>
+        <div className={clsx(
+          (sidebarListVisibility ? 'border-black' : 'border-gray-100'), 
+          'flex flex-row justify-between w-full pb-2 border-b border-solid md:py-0 md:border-none'
+        )}>
+          <div className="md:py-1">
+            <Link href='/' passHref>
+              <a onClick={() => onMenuToggle(false)} className={clsx(
+                (sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'), 
+                'bg-transparent md:duration-150 md:transition-colors md:leading-none md:table-cell md:text-center md:align-middle md:border md:border-black md:rounded-full md:w-10 md:h-10 md:boder-solid md:hover:text-white md:hover:bg-black'
+              )}>
                   RM
-                </a>
-              </Link>
-            </div>
+              </a>
+            </Link>
+          </div>
           
-            <div>
-              <button 
-                className={clsx((sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'),'relative md:transition-colors md:duration-150 bg-transparent md:hidden md:hover:text-white md:hover:bg-black')}
-                onClick={() => setSidebarListVisibility(!sidebarListVisibility)}
-              >
-                <span>{sidebarListVisibility ? 'Close ' : 'Index'}</span>
-              </button>
-            </div>
-          </div>
-
-          <div className={clsx(sidebarListVisibility ? 'block ' : 'hidden', 'md:block space-y-molecular flex-1')}>
-            {tags.map((tag, i) => {
-              return (
-                <TagList
-                  className={clsx((sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'), 'md:hover:text-white md:hover:bg-black')} 
-                  key={i}
-                  title={tag}
-                  content={notes}
-                />
-              )
-            })}
-          </div>
-          <div className={clsx(sidebarListVisibility ? 'block ' : 'hidden', 'mt-36 md:block')}><Clock /></div>
+          <MenuButton className={clsx(
+            (sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'),
+            'md:hidden bg-transparent relative cursor-pointer')} />
+     
         </div>
+        
+        <div className={clsx(sidebarListVisibility ? 'block md:translate-x-0' : 'hidden md:-translate-x-56', ' md:duration-300 md:block md:transform-gpu space-y-molecular flex-1 min-w-min')}>
+          {tags.map((tag, i) => {
+            return (
+              <TagList
+                className={clsx((sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'), 'md:hover:text-white md:hover:bg-black md:transition-colors md:duration-150')}  
+                key={i}
+                title={tag}
+                content={notes}
+              />
+            )
+          })}
+        </div>
+        
+        <MenuButton className={clsx(sidebarListVisibility ? '-rotate-90 origin-right' : 'rotate-0 origin-center', 'relative hidden transition transform-gpu bg-transparent cursor-pointer md:block hover:text-white hover:bg-black vertical-lr place-self-start')} />
       </div>
     </nav>
   )
@@ -86,7 +92,6 @@ const TagList = ({title, content, className}: TagListType) => {
       })
       .filter((list: any) => typeof list !== 'undefined')
   
-
   if (listItem[0]) {
     return (
       <figure>
