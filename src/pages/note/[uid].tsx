@@ -10,6 +10,7 @@ import { Layout } from 'src/components/Layout'
 import { ParsedUrlQuery } from 'querystring'
 import { Seo } from 'src/components/Seo'
 import { dateFormatter } from 'utils/dateFormatter'
+import { ReactNode } from 'react'
 
 interface IParams extends ParsedUrlQuery {
     uid: string
@@ -20,9 +21,9 @@ type NotePageType = {
   notes: any,
 }
 
-export default function NotePage({note, notes}: NotePageType) {
+export default function NotePage({note}: NotePageType) {
   return (
-    <Layout notes={notes}>
+    <>
       <Seo 
         title={`${dateFormatter(note.first_publication_date)} ✶ ${RichText.asText(note.data.title)}`}
       />
@@ -35,9 +36,12 @@ export default function NotePage({note, notes}: NotePageType) {
         article={<SliceZone resolver={resolver} slices={note.data.body}/>}
         caption={RichText.asText(note.data.caption) && <RichText render={note.data.caption} htmlSerializer={htmlSerializer} />}
       />
-    </Layout>
+    </>
   )
-  
+}
+
+NotePage.withLayout = function withLayout(page: ReactNode, notes: any) {
+  return <Layout notes={notes}>{page}</Layout>
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -57,6 +61,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 }
+
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { results } = await Client().query(Prismic.Predicates.at('document.type', 'note'), {

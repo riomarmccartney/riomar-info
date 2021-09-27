@@ -1,7 +1,21 @@
+/* eslint-disable no-unused-vars */
+
 import '../styles/globals.css'
+import type { ReactElement, ReactNode } from 'react'
+import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+type NextPageWithLayout = NextPage & {
+  withLayout?: (page: ReactElement) => ReactNode
 }
-export default MyApp
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const withLayout = Component.withLayout ?? ((page) => page) 
+  const { notes } = pageProps
+
+  return withLayout(<Component {...pageProps} />, notes)
+}
