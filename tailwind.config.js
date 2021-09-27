@@ -28,6 +28,21 @@ module.exports = {
       addBase({
         'html': { fontSize: '14px' },
       })
+    }),
+    plugin(function({ addUtilities }) {
+      addUtilities({
+        '.horizontal-tb': {
+          writingMode: 'horizontal-tb',
+        },
+        '.vertical-rl': {
+          writingMode: 'vertical-rl'
+        },
+        '.vertical-lr': {
+          writingMode: 'vertical-lr'
+        }
+      }, {
+        variants: ['responsive'],
+      })
     })
   ],
 }
