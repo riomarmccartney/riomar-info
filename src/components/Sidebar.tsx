@@ -2,7 +2,6 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { RichText } from 'prismic-reactjs'
 import { dateFormatter } from 'utils/dateFormatter'
-import { ReactNode } from 'react'
 
 type TagListType = {
   title: any,
@@ -21,14 +20,14 @@ type NoteType = {
 
 type SidebarType = {
   notes: any,
-  onMenuToggle: ReactNode,
+  onMenuToggle: any,
   sidebarListVisibility: boolean,
 }
 
 export const Sidebar = ({ onMenuToggle, sidebarListVisibility, notes }: SidebarType) => {
   const tags = ['Notes', 'Work']
 
-  const MenuButton = ({ className }) => {
+  const MenuButton = ({ className }: {className?: string}) => {
     return (
       <div className={className}
         onClick={() => onMenuToggle()}>{sidebarListVisibility ? 'Close ' : 'Index'}
