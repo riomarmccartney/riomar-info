@@ -29,8 +29,8 @@ export const Sidebar = ({ onMenuToggle, sidebarListVisibility, notes }: SidebarT
 
   const MenuButton = ({ className }: {className?: string}) => {
     return (
-      <div className={className}
-        onClick={() => onMenuToggle()}>{sidebarListVisibility ? 'Close ' : 'Index'}
+      <div className={className}>
+        <div onClick={() => onMenuToggle()}>{sidebarListVisibility ? 'Close' : 'Index'}</div>
       </div>
     )
   }
@@ -44,7 +44,7 @@ export const Sidebar = ({ onMenuToggle, sidebarListVisibility, notes }: SidebarT
         )}>
           <div className="md:py-1">
             <Link href='/' passHref>
-              <a className={clsx(
+              <a onClick={() => onMenuToggle(false)} className={clsx(
                 (sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'), 
                 'bg-transparent md:duration-150 md:transition-colors md:leading-none md:table-cell md:text-center md:align-middle md:border md:border-black md:rounded-full md:w-10 md:h-10 md:boder-solid md:hover:text-white md:hover:bg-black'
               )}>
@@ -59,7 +59,7 @@ export const Sidebar = ({ onMenuToggle, sidebarListVisibility, notes }: SidebarT
      
         </div>
         
-        <div onClick={() => onMenuToggle(false)} className={clsx(sidebarListVisibility ? 'block md:translate-x-0' : 'hidden md:-translate-x-56', ' md:duration-300 md:block md:transform-gpu space-y-molecular flex-1 min-w-min')}>
+        <div className={clsx(sidebarListVisibility ? 'block md:translate-x-0' : 'hidden md:-translate-x-56', ' md:duration-300 md:block md:transform-gpu space-y-molecular flex-1 min-w-min')}>
           {tags.map((tag, i) => {
             return (
               <TagList
@@ -71,12 +71,9 @@ export const Sidebar = ({ onMenuToggle, sidebarListVisibility, notes }: SidebarT
             )
           })}
         </div>
-
-        <MenuButton className="relative hidden transition-colors duration-150 bg-transparent cursor-pointer md:block hover:text-white hover:bg-black vertical-lr place-self-start" />
         
-        
+        <MenuButton className={clsx(sidebarListVisibility ? '-rotate-90 origin-right' : 'rotate-0 origin-center', 'relative hidden transition transform-gpu bg-transparent cursor-pointer md:block hover:text-white hover:bg-black vertical-lr place-self-start')} />
       </div>
-
     </nav>
   )
 }
