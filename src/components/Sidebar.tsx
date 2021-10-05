@@ -46,7 +46,7 @@ export const Sidebar = ({ onMenuToggle, sidebarListVisibility, notes }: SidebarT
             </Link>
           </div>
           
-          <div className={clsx(
+          <div onClick={() => onMenuToggle(false)} className={clsx(
             (sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'),
             'md:hidden bg-transparent relative cursor-pointer')} >{menuLabel}</div>
      
