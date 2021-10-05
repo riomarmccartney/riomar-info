@@ -26,17 +26,10 @@ type SidebarType = {
 
 export const Sidebar = ({ onMenuToggle, sidebarListVisibility, notes }: SidebarType) => {
   const tags = ['Notes', 'Work']
-
-  const MenuButton = ({ className }: {className?: string}) => {
-    return (
-      <div className={className}>
-        <div onClick={() => onMenuToggle()}>{sidebarListVisibility ? 'Close' : 'Index'}</div>
-      </div>
-    )
-  }
+  const menuLabel = sidebarListVisibility ? 'Close' : 'Index'
 
   return (
-    <nav className={clsx((sidebarListVisibility ? 'bg-gray-100 text-current h-full' : 'mix-blend-difference text-gray-100 '), 'fixed z-50 w-full px-4 py-4 border-black border-solid md:relative md:py-8 md:pl-8 md:pr-0 md:bg-none md:text-current md:border-none md:mix-blend-normal md:w-auto')}>
+    <nav className={clsx((sidebarListVisibility ? 'bg-gray-100 text-current h-full' : 'mix-blend-difference text-gray-100 '), 'fixed z-50 w-full px-4 py-4 border-black border-solid md:relative md:py-8 md:pl-8 md:pr-0 md:bg-none md:text-current md:border-none md:mix-blend-normal md:w-auto select-none')}>
       <div className='relative flex flex-col justify-between max-w-2xl mx-auto whitespace-nowrap space-y-universal md:h-full md:mx-0 md:max-w-none md:w-10'>
         <div className={clsx(
           (sidebarListVisibility ? 'border-black' : 'border-gray-100'), 
@@ -53,9 +46,9 @@ export const Sidebar = ({ onMenuToggle, sidebarListVisibility, notes }: SidebarT
             </Link>
           </div>
           
-          <MenuButton className={clsx(
+          <div className={clsx(
             (sidebarListVisibility ? 'hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white'),
-            'md:hidden bg-transparent relative cursor-pointer')} />
+            'md:hidden bg-transparent relative cursor-pointer')} >{menuLabel}</div>
      
         </div>
         
@@ -72,7 +65,7 @@ export const Sidebar = ({ onMenuToggle, sidebarListVisibility, notes }: SidebarT
           })}
         </div>
         
-        <MenuButton className={clsx(sidebarListVisibility ? '-rotate-90 origin-right' : 'rotate-0 origin-center', 'relative hidden transition transform-gpu bg-transparent cursor-pointer md:block hover:text-white hover:bg-black vertical-lr place-self-start')} />
+        <div onClick={() => onMenuToggle()} className={clsx(sidebarListVisibility ? '-rotate-90 origin-right' : 'rotate-0 origin-center', 'relative hidden transition transform-gpu bg-transparent cursor-pointer md:block hover:text-white hover:bg-black vertical-lr place-self-start')} >{menuLabel}</div>
       </div>
     </nav>
   )
