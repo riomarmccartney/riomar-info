@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import { GoogleAnalytics } from 'src/components/GoogleAnalytics'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -25,9 +24,7 @@ class MyDocument extends Document {
             rel="icon" 
             type="image/png" 
             href="/favicon.png"   
-          /> 
-
-          <GoogleAnalytics/>
+          />
         </Head>
 
         <body>
