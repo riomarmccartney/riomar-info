@@ -63,56 +63,60 @@ export const Sidebar = ({
               </a>
             </Link>
           </div>
-
-          <div
-            onClick={() => onMenuToggle()}
-            className={clsx(
-              sidebarListVisibility
-                ? 'hover:text-white hover:bg-black'
-                : 'hover:text-black hover:bg-white',
-              'md:hidden bg-transparent relative cursor-pointer',
-            )}
-          >
-            {menuLabel}
-          </div>
-        </div>
-
-        <div
-          className={clsx(
-            sidebarListVisibility
-              ? 'block md:translate-x-0'
-              : 'hidden md:-translate-x-56',
-            ' md:duration-300 md:block md:transform-gpu space-y-molecular flex-1 min-w-min',
+          {notes.length > 0 && (
+            <div
+              onClick={() => onMenuToggle()}
+              className={clsx(
+                sidebarListVisibility
+                  ? 'hover:text-white hover:bg-black'
+                  : 'hover:text-black hover:bg-white',
+                'md:hidden bg-transparent relative cursor-pointer',
+              )}
+            >
+              {menuLabel}
+            </div>
           )}
-        >
-          {tags.map((tag, i) => {
-            return (
-              <TagList
-                className={clsx(
-                  sidebarListVisibility
-                    ? 'hover:text-white hover:bg-black'
-                    : 'hover:text-black hover:bg-white',
-                  'md:hover:text-white md:hover:bg-black md:transition-colors md:duration-150',
-                )}
-                key={i}
-                title={tag}
-                content={notes}
-              />
-            )
-          })}
         </div>
+        {notes.length > 0 && (
+          <>
+            <div
+              className={clsx(
+                sidebarListVisibility
+                  ? 'block md:translate-x-0'
+                  : 'hidden md:-translate-x-56',
+                ' md:duration-300 md:block md:transform-gpu space-y-molecular flex-1 min-w-min',
+              )}
+            >
+              {tags.map((tag, i) => {
+                return (
+                  <TagList
+                    className={clsx(
+                      sidebarListVisibility
+                        ? 'hover:text-white hover:bg-black'
+                        : 'hover:text-black hover:bg-white',
+                      'md:hover:text-white md:hover:bg-black md:transition-colors md:duration-150',
+                    )}
+                    key={i}
+                    title={tag}
+                    content={notes}
+                  />
+                )
+              })}
+            </div>
 
-        <div
-          onClick={() => onMenuToggle()}
-          className={clsx(
-            sidebarListVisibility
-              ? '-rotate-90 origin-right'
-              : 'rotate-0 origin-center',
-            'relative hidden transition transform-gpu bg-transparent cursor-pointer md:block hover:text-white hover:bg-black vertical-lr place-self-start',
-          )}
-        >
-          {menuLabel}
-        </div>
+            <div
+              onClick={() => onMenuToggle()}
+              className={clsx(
+                sidebarListVisibility
+                  ? '-rotate-90 origin-right'
+                  : 'rotate-0 origin-center',
+                'relative hidden transition transform-gpu bg-transparent cursor-pointer md:block hover:text-white hover:bg-black vertical-lr place-self-start',
+              )}
+            >
+              {menuLabel}
+            </div>
+          </>
+        )}
       </div>
     </nav>
   )
