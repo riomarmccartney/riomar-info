@@ -13,7 +13,7 @@ export default function Home() {
     },
     {
       name: 'Email',
-      url: 'mailto:riomar@riomar.studio',
+      url: 'mailto:hello@riomar.studio',
     },
   ]
   return (
