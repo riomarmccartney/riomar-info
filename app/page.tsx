@@ -19,7 +19,10 @@ export default function Home() {
   return (
     <main className="grid grid-flow-row-dense grid-cols-1 gap-4 p-2 text-sm min-h-dvh">
       <div>
-        <h1>Riomar McCartney — マッカートニー龍馬</h1>
+        <h1>
+          Riomar McCartney —{' '}
+          <span className="font-mincho">マッカートニー龍馬</span>
+        </h1>
         <p>Designer, Programmer, and Art Director based in Tokyo.</p>
       </div>
       <div>
