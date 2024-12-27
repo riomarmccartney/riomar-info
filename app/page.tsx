@@ -27,24 +27,19 @@ export default function Home() {
       </div>
       <div>
         <p className="max-w-prose">
-          Riomar was born in Japan, 1996. Growing up, he was immersed in various
-          genres and lifestyles due to his musician and artist-oriented parents.
-          This exposure to different mediums and cultures across Japan and
-          Europe allowed him to develop a unique taste for blending different
-          genres and perspectives. This ability to craft distinctive directions
-          and ideas has enabled him to stand out in his expression and
-          communication through design and direction.
+          Born in Japan in 1996, I grew up surrounded by music, art, and diverse
+          cultures across Japan and Europe. These experiences shaped my approach
+          to design and direction.
           <br />
-          <br />
-          Currently, He is working on{' '}
+          <br />I run{' '}
           <a className="underline" href="https://upcoming.studio">
             upcoming.studio
           </a>
-          , a design collective that partners with artists and brands to
-          approach ideas through graphics, editorial, and art direction.
+          , a collective partnering with artists and brands on graphics,
+          editorial, and art direction.
           <br />
           <br />
-          Links:{' '}
+          Find me on:{' '}
           {links.map((link, index) => (
             <>
               <a key={link.name} className="underline" href={link.url}>
@@ -53,6 +48,9 @@ export default function Home() {
               {index < links.length - 1 && ', '}
             </>
           ))}
+          <br />
+          <br />
+          Last updated: Dec 26, 2024
         </p>
       </div>
 
