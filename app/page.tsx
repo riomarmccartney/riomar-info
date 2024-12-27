@@ -27,13 +27,13 @@ export default function Home() {
       </div>
       <div>
         <p className="max-w-prose">
-          Riomar is a was born in Japan in 1996. Growing up, he was immersed in
-          various genres and lifestyles due to his musician and artist-oriented
-          parents. This exposure to different mediums and cultures across Japan
-          and Europe allowed him to develop a unique taste for blending
-          different genres and perspectives. This ability to craft distinctive
-          directions and ideas has enabled him to stand out in his expression
-          and communication through design and direction.
+          Riomar was born in Japan, 1996. Growing up, he was immersed in various
+          genres and lifestyles due to his musician and artist-oriented parents.
+          This exposure to different mediums and cultures across Japan and
+          Europe allowed him to develop a unique taste for blending different
+          genres and perspectives. This ability to craft distinctive directions
+          and ideas has enabled him to stand out in his expression and
+          communication through design and direction.
           <br />
           <br />
           Currently, He is working on{' '}
