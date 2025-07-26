@@ -27,15 +27,11 @@ export default function Home() {
       </div>
       <div>
         <p className="max-w-prose">
-          Born in Japan in 1996, I grew up surrounded by music, art, and diverse
-          cultures across Japan and Europe. These experiences shaped my approach
-          to design and direction.
-          <br />
           <br />I run{' '}
           <a className="underline" href="https://upcoming.studio">
             upcoming.studio
           </a>
-          , a collective partnering with artists and brands on graphics,
+          , a graphic design and publishing studio collabrating with artists and brands on graphics,
           editorial, and art direction.
           <br />
           <br />
