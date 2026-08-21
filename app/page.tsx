@@ -23,7 +23,7 @@ export default function Home() {
           Riomar McCartney —{' '}
           <span className="font-mincho">マッカートニー龍馬</span>
         </h1>
-        <p>Designer, Programmer, and Art Director based in Tokyo.</p>
+        <p>Designer, Art Director, and Programmer based in Tokyo.</p>
       </div>
       <div>
         <p className="max-w-prose">
@@ -76,5 +76,5 @@ export default function Home() {
 export const metadata: Metadata = {
   title: 'Riomar McCartney',
   description:
-    'Riomar McCartney (マッカートニー 龍馬) is a designer, programmer, and art director based in Tokyo. He is founder of upcoming.studio',
+    'Riomar McCartney (マッカートニー龍馬) is a designer, art director, and programmer based in Tokyo, and co-founder of upcoming.studio, a design studio and publishing practice.',
 }
